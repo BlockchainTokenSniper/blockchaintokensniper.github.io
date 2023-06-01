@@ -40,7 +40,7 @@
             try {
                 // Request account access
                 await connectToMetamask();
-                const tierPrices = await contract.methods.getTierPrices().call();
+                const tierPrices = await contract.methods.tierPrices().call();
                 populateTierOptions(tierPrices);
             } catch (error) {
                 console.error(error);
