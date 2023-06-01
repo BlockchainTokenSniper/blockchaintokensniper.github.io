@@ -1,1 +1,56 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.5.2/web3.min.js"></script>
+</head>
+<body>
+    <h2>BTS Manager</h2>
+    <label for="tier">Select Tier:</label>
+    <select id="tier" name="tier">
+        <option value="1">Bronze</option>
+        <option value="2">Silver</option>
+        <option value="3">Gold</option>
+        <option value="4">Diamond</option>
+    </select>
+    <br>
+    <label for="refAddress">Referral Address:</label>
+    <input type="text" id="refAddress" name="refAddress" value="0x0000000000000000000000000000000000000000">
+    <br>
+    <button onclick="buyTier()">Buy Tier</button>
+</body>
+
+<script>
+    let web3 = new Web3('https://bsc-dataseed.binance.org'); // Connecting to Binance Smart Chain
+
+    const contractAddress = '0x83804A48E21a499AebB4063c07cfAAA5cB37553f';
+    const contractABI = '[{"inputs":[],"name":"adminAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bool","name":"_freeReferrerRegistrationAllowed","type":"bool"}],"name":"allowFreeReferrerRegistration","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"btsRouterV1Address","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierID","type":"uint256"},{"internalType":"address","name":"_referrerAddress","type":"address"}],"name":"buyTier","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"_walletAddress","type":"address"}],"name":"changeWallet","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"defaultReferralDiscount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultReferrerCommission","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultReferrerSnipeFeeCut","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"freeReferrerRegistrationAllowed","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"hasMigrated","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"migrateTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"numReferrals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numReferrers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrerInfo","outputs":[{"internalType":"bool","name":"isReferrer","type":"bool"},{"internalType":"uint256","name":"referralDiscount","type":"uint256"},{"internalType":"uint256","name":"referrerCommission","type":"uint256"},{"internalType":"uint256","name":"referrerSnipeFeeCut","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"registerAsReferrer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_adminAddress","type":"address"}],"name":"setAdminAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferralDiscount","type":"uint256"}],"name":"setDefaultReferralDiscount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferrerCommission","type":"uint256"}],"name":"setDefaultReferrerCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferrerSnipeFeeCut","type":"uint256"}],"name":"setDefaultReferrerSnipeFeeCut","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referralDiscount","type":"uint256"}],"name":"setReferralDiscount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referrerCommission","type":"uint256"}],"name":"setReferrerCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referrerSnipeFeeCut","type":"uint256"}],"name":"setReferrerSnipeFeeCut","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierType","type":"uint256"},{"internalType":"uint256","name":"_tierPrice","type":"uint256"}],"name":"setTierPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierType","type":"uint256"},{"internalType":"uint256","name":"_tierSnipeFee","type":"uint256"}],"name":"setTierSnipeFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"},{"internalType":"uint256","name":"_tierType","type":"uint256"}],"name":"setUserTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"tierPrices","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"tierSnipeFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierID","type":"uint256"},{"internalType":"address","name":"_referrerAddress","type":"address"}],"name":"upgradeTier","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userReferrer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userTier","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]'; // Replace this with your contract's ABI
+
+    const contract = new web3.eth.Contract(contractABI, contractAddress);
+
+    window.onload = async function() {
+        await loadTierPrices();
+    };
+
+    async function loadTierPrices() {
+        let select = document.getElementById('tier');
+        for(let i = 1; i <= 4; i++) {
+            let price = await contract.methods.tierPrices(i).call();
+            price = web3.utils.fromWei(price, 'ether');
+            select.options[i-1].text = select.options[i-1].text + ' - ' + price + ' BNB';
+        }
+    }
+
+    async function buyTier() {
+        const tier = document.getElementById('tier').value;
+        const refAddress = document.getElementById('refAddress').value;
+
+        const accounts = await web3.eth.getAccounts();
+        const sender = accounts[0];
+
+        const price = await contract.methods.tierPrices(tier).call();
+        
+        await contract.methods.buyTier(tier, refAddress).send({from: sender, value: price});
+    }
+</script>
+</html>
