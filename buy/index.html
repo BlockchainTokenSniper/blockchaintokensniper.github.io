@@ -38,9 +38,17 @@
             contract = new web3.eth.Contract(contractABI, contractAddress);
 
             try {
-                // Request account access
                 await connectToMetamask();
-                const tierPrices = await contract.methods.tierPrices().call();
+
+                // Assuming you have 5 tiers
+                const numberOfTiers = 5;  
+                const tierPrices = [];
+
+                for (let i = 0; i < numberOfTiers; i++) {
+                    const tierPrice = await contract.methods.tierPrices(i).call();
+                    tierPrices.push(tierPrice);
+                }
+
                 populateTierOptions(tierPrices);
             } catch (error) {
                 console.error(error);
@@ -49,6 +57,7 @@
             console.log('Non-Ethereum browser detected. Consider trying MetaMask!');
         }
     }
+
 
     document.getElementById('connectButton').addEventListener('click', connectToMetamask);
 
