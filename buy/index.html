@@ -1,99 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.5.2/web3.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tier Selection</title>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <button id="connectButton">Connect to MetaMask</button>
-
-    <div>
-        Tier: 
-        <select id="tier">
-            <!-- Options will be populated dynamically -->
+    <form id="buyTierForm">
+        <h1>Select Your Tier</h1>
+        <select id="tierSelection">
+            <option value="1">Bronze - 0.5 BNB</option>
+            <option value="2">Silver - 1 BNB</option>
+            <option value="3">Gold - 2 BNB</option>
+            <option value="4">Diamond - 10 BNB</option>
         </select>
-    </div>
-    <div>
-        Referral Address: <input type="text" id="referrerAddress" placeholder="Referral address (optional)">
-    </div>
-    <div>
-        <button onclick="buyTier()">Buy Tier</button>
-    </div>
-</body>
+        <input id="referrerAddress" type="text" placeholder="Referral address (Optional)">
+        <button type="submit">Buy Tier</button>
+    </form>
 
-<script>
-    let web3;
-    let contract;
-    let userAccount;
+    <script>
+        // connect to the MetaMask
+        window.addEventListener('load', async () => {
+            if (window.ethereum) {
+                window.web3 = new Web3(ethereum);
+                try {
+                    await ethereum.enable(); // request account access
+                } catch (error) {
+                    console.error("User denied account access")
+                }
+            } else if (window.web3) {
+                window.web3 = new Web3(web3.currentProvider);
+            } else {
+                console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+            }
 
-    const contractAddress = '0x83804A48E21a499AebB4063c07cfAAA5cB37553f';
-    const contractABI = [
-        [{"inputs":[],"name":"adminAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bool","name":"_freeReferrerRegistrationAllowed","type":"bool"}],"name":"allowFreeReferrerRegistration","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"btsRouterV1Address","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierID","type":"uint256"},{"internalType":"address","name":"_referrerAddress","type":"address"}],"name":"buyTier","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"_walletAddress","type":"address"}],"name":"changeWallet","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"defaultReferralDiscount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultReferrerCommission","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultReferrerSnipeFeeCut","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"freeReferrerRegistrationAllowed","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"hasMigrated","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"migrateTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"numReferrals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numReferrers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrerInfo","outputs":[{"internalType":"bool","name":"isReferrer","type":"bool"},{"internalType":"uint256","name":"referralDiscount","type":"uint256"},{"internalType":"uint256","name":"referrerCommission","type":"uint256"},{"internalType":"uint256","name":"referrerSnipeFeeCut","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"registerAsReferrer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_adminAddress","type":"address"}],"name":"setAdminAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferralDiscount","type":"uint256"}],"name":"setDefaultReferralDiscount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferrerCommission","type":"uint256"}],"name":"setDefaultReferrerCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferrerSnipeFeeCut","type":"uint256"}],"name":"setDefaultReferrerSnipeFeeCut","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referralDiscount","type":"uint256"}],"name":"setReferralDiscount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referrerCommission","type":"uint256"}],"name":"setReferrerCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referrerSnipeFeeCut","type":"uint256"}],"name":"setReferrerSnipeFeeCut","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierType","type":"uint256"},{"internalType":"uint256","name":"_tierPrice","type":"uint256"}],"name":"setTierPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierType","type":"uint256"},{"internalType":"uint256","name":"_tierSnipeFee","type":"uint256"}],"name":"setTierSnipeFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"},{"internalType":"uint256","name":"_tierType","type":"uint256"}],"name":"setUserTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"tierPrices","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"tierSnipeFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierID","type":"uint256"},{"internalType":"address","name":"_referrerAddress","type":"address"}],"name":"upgradeTier","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userReferrer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userTier","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]
-    ];
+            // setup contract
+            const contractABI = [{"inputs":[],"name":"adminAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bool","name":"_freeReferrerRegistrationAllowed","type":"bool"}],"name":"allowFreeReferrerRegistration","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"btsRouterV1Address","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierID","type":"uint256"},{"internalType":"address","name":"_referrerAddress","type":"address"}],"name":"buyTier","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"_walletAddress","type":"address"}],"name":"changeWallet","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"defaultReferralDiscount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultReferrerCommission","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultReferrerSnipeFeeCut","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"freeReferrerRegistrationAllowed","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"hasMigrated","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"migrateTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"numReferrals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numReferrers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrerInfo","outputs":[{"internalType":"bool","name":"isReferrer","type":"bool"},{"internalType":"uint256","name":"referralDiscount","type":"uint256"},{"internalType":"uint256","name":"referrerCommission","type":"uint256"},{"internalType":"uint256","name":"referrerSnipeFeeCut","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"registerAsReferrer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_adminAddress","type":"address"}],"name":"setAdminAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferralDiscount","type":"uint256"}],"name":"setDefaultReferralDiscount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferrerCommission","type":"uint256"}],"name":"setDefaultReferrerCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferrerSnipeFeeCut","type":"uint256"}],"name":"setDefaultReferrerSnipeFeeCut","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referralDiscount","type":"uint256"}],"name":"setReferralDiscount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referrerCommission","type":"uint256"}],"name":"setReferrerCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referrerSnipeFeeCut","type":"uint256"}],"name":"setReferrerSnipeFeeCut","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierType","type":"uint256"},{"internalType":"uint256","name":"_tierPrice","type":"uint256"}],"name":"setTierPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierType","type":"uint256"},{"internalType":"uint256","name":"_tierSnipeFee","type":"uint256"}],"name":"setTierSnipeFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"},{"internalType":"uint256","name":"_tierType","type":"uint256"}],"name":"setUserTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"tierPrices","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"tierSnipeFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierID","type":"uint256"},{"internalType":"address","name":"_referrerAddress","type":"address"}],"name":"upgradeTier","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userReferrer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userTier","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}];
+            const contractAddress = "";
+            const contract = new web3.eth.Contract(contractABI, contractAddress);
 
-    window.addEventListener('load', initialize);
+            // handle form submission
+            document.getElementById('buyTierForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const tierId = document.getElementById('tierSelection').value;
+                const referrerAddress = document.getElementById('referrerAddress').value || "0x0000000000000000000000000000000000000000";
+                const accounts = await web3.eth.getAccounts();
+                const senderAddress = accounts[0];
 
-    async function initialize() {
-        if (window.ethereum) {
-            web3 = new Web3(window.ethereum);
-            contract = new web3.eth.Contract(contractABI, contractAddress);
+                //TODO: Get the actual price for each tier from the smart contract and convert it to Wei.
+                let priceInWei;
 
-            try {
-                await connectToMetamask();
-
-                // Assuming you have 5 tiers
-                const numberOfTiers = 5;  
-                const tierPrices = [];
-
-                for (let i = 0; i < numberOfTiers; i++) {
-                    const tierPrice = await contract.methods.tierPrices(i).call();
-                    tierPrices.push(tierPrice);
+                switch(tierId) {
+                    case "1":
+                        priceInWei = web3.utils.toWei("0.5", "ether");
+                        break;
+                    case "2":
+                        priceInWei = web3.utils.toWei("1", "ether");
+                        break;
+                    case "3":
+                        priceInWei = web3.utils.toWei("2", "ether");
+                        break;
+                    case "4":
+                        priceInWei = web3.utils.toWei("4", "ether");
+                        break;
+                    default:
+                        console.log("Invalid Tier Id");
+                        return;
                 }
 
-                populateTierOptions(tierPrices);
-            } catch (error) {
-                console.error(error);
-            }
-        } else {
-            console.log('Non-Ethereum browser detected. Consider trying MetaMask!');
-        }
-    }
-
-
-    document.getElementById('connectButton').addEventListener('click', connectToMetamask);
-
-    async function connectToMetamask() {
-        try {
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            userAccount = accounts[0];
-            console.log("Connected to account: ", userAccount);
-        } catch (error) {
-            console.error("User denied account access");
-        }
-    }
-
-    function populateTierOptions(tierPrices) {
-        const tierElement = document.getElementById('tier');
-        tierPrices.forEach((price, index) => {
-            const option = document.createElement('option');
-            option.value = index + 1; // Assuming tiers start from 1
-            option.text = `Tier ${index + 1}: ${price} BNB`;
-            tierElement.add(option);
+                contract.methods.buyTier(tierId, referrerAddress).send({ from: senderAddress, value: priceInWei })
+                    .then(receipt => console.log(receipt))
+                    .catch(err => console.error(err));
+            });
         });
-    }
-
-    async function buyTier() {
-        const tierElement = document.getElementById('tier');
-        const tierValue = tierElement.options[tierElement.selectedIndex].value;
-
-        const referrerAddress = document.getElementById('referrerAddress').value || '0x0000000000000000000000000000000000000000';
-
-        try {
-            const gasEstimate = await contract.methods.buyTier(tierValue, referrerAddress).estimateGas({ from: userAccount });
-
-            contract.methods.buyTier(tierValue, referrerAddress).send({ from: userAccount, gas: gasEstimate });
-        } catch (error) {
-            console.error(error);
-        }
-    }
-</script>
+    </script>
+</body>
 </html>
