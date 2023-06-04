@@ -141,6 +141,7 @@
                 document.getElementById('referrerAddress').value = referrerAddress;
                 var referrerInfo = await contract.methods.referrerInfo(referrerAddress).call();
                 referralDiscount = (10000 - referrerInfo[1]) / 10000;
+                console.log("discount is " + referralDiscount);
             }
 
             // Get tier prices and populate select options
