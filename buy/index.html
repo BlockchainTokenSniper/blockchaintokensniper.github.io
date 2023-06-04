@@ -162,7 +162,7 @@
 
                 contract.methods.buyTier(tierId, referrerAddress).send({ from: senderAddress, value: tierPriceInWei * referralDiscount })
                     .then(receipt => {
-                        document.getElementById('transactionHash').textContent = `Transaction hash: ${receipt.transactionHash}`;
+                        document.getElementById('transactionHash').textContent = `Thank you for buying a tier! \n\nTX hash: ${receipt.transactionHash}`;
                         // Show the modal
                         document.getElementById('myModal').style.display = "block";
                     })
