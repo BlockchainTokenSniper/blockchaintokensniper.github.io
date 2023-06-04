@@ -131,11 +131,12 @@
             }
 
             // Get tier prices and populate select options
+            var tierNames = ['Bronze', 'Silver', 'Diamond', 'Gold'];
             for (let i = 1; i <= 4; i++) {
                 const tierPriceInWei = await contract.methods.tierPrices(i).call();
                 const tierPriceInEther = web3.utils.fromWei(tierPriceInWei, 'ether');
                 let option = document.createElement("option");
-                option.text = `Tier ${i} (Price: ${tierPriceInEther} BNB)`;
+                option.text = `${tierNames[i]} Tier (Price: ${tierPriceInEther} BNB)`;
                 option.value = i;
                 tierSelection.add(option);
             }
