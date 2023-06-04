@@ -139,7 +139,7 @@
             if (referrer) {
                 const referrerAddress = web3.utils.toChecksumAddress(referrer);
                 document.getElementById('referrerAddress').value = referrerAddress;
-                var referrerInfo = await contract.methods.referrerInfo().call();
+                var referrerInfo = await contract.methods.referrerInfo(referrerAddress).call();
                 referralDiscount = (10000 - referrerInfo[1]) / 10000;
             }
 
