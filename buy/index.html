@@ -135,13 +135,12 @@
              // Check if there's a referrer in the URL
             const urlParams = new URLSearchParams(window.location.search);
             const referrer = urlParams.get('r');
+            var referrerAddress = "0x0000000000000000000000000000000000000000";
 
             if (referrer) {
-                const referrerAddress = web3.utils.toChecksumAddress(referrer);
-                document.getElementById('referrerAddress').value = referrerAddress;
+                referrerAddress = web3.utils.toChecksumAddress(referrer);
                 var referrerInfo = await contract.methods.referrerInfo(referrerAddress).call();
                 referralDiscount = (10000 - referrerInfo[1]) / 10000;
-                console.log("discount is " + referralDiscount);
             }
 
             // Get tier prices and populate select options
@@ -160,7 +159,6 @@
                 event.preventDefault();
 
                 const tierId = tierSelection.value;
-                const referrerAddress = document.getElementById('referrerAddress').value !== "" ? web3.utils.toChecksumAddress(document.getElementById('referrerAddress').value) : "0x0000000000000000000000000000000000000000";
                 const senderAddress = web3.utils.toChecksumAddress(ethereum.selectedAddress);
                 const tierPriceInWei = await contract.methods.tierPrices(tierId).call();
 
