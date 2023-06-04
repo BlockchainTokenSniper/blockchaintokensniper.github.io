@@ -97,7 +97,7 @@
                 event.preventDefault();
 
                 const tierId = tierSelection.value;
-                const referrerAddress = web3.utils.toChecksumAddress(document.getElementById('referrerAddress').value) !== "" ? web3.utils.toChecksumAddress(document.getElementById('referrerAddress').value) : "0x0000000000000000000000000000000000000000";
+                const referrerAddress = document.getElementById('referrerAddress').value !== "" ? web3.utils.toChecksumAddress(document.getElementById('referrerAddress').value) : "0x0000000000000000000000000000000000000000";
                 const senderAddress = web3.utils.toChecksumAddress(ethereum.selectedAddress);
                 const tierPriceInWei = await contract.methods.tierPrices(tierId).call();
 
