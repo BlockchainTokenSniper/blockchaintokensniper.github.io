@@ -1,147 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buy Tier</title>
-    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            border: 1px solid #ddd;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-        }
-
-        button {
-            background-color: #007bff;
-            color: #fff;
-            padding: 0.5rem 1rem;
-            border-radius: 0.25rem;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Modal styles */
+        /* The Modal (background) */
         .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
             left: 0;
             top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.4);
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
         }
 
+        /* Modal Content/Box */
         .modal-content {
             background-color: #fefefe;
-            margin: auto;
+            margin: 15% auto; /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
 </head>
 <body>
+    <h1>Buy Tier</h1>
     <form id="buyTierForm">
-        <h1>Buy Tier</h1>
-        <select id="tierSelection"></select>
-        <input id="referrerAddress" type="text" placeholder="Referral address (Optional)">
-        <button type="submit">Buy Tier</button>
+        <label for="tierSelection">Select Tier:</label>
+        <select id="tierSelection" required></select>
+        <label for="referrerAddress">Referrer Address:</label>
+        <input type="text" id="referrerAddress" placeholder="Enter Referrer Address">
+        <input type="submit" value="Buy Tier">
     </form>
 
-    <!-- Modal -->
+    <!-- The Modal -->
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <h2>Thank you for purchasing a tier!</h2>
+            <span class="close">&times;</span>
             <p id="transactionHash"></p>
         </div>
     </div>
 
     <script>
-        // connect to the MetaMask
+        const web3 = new Web3(window.ethereum);
+        const contract = new web3.eth.Contract(<YourContractABI>, web3.utils.toChecksumAddress(<YourContractAddress>));
+        let tierSelection = document.getElementById('tierSelection');
+        
         window.addEventListener('load', async () => {
+            // Request account access
             if (window.ethereum) {
-                window.web3 = new Web3(ethereum);
-                try {
-                    await ethereum.enable(); // request account access
-                } catch (error) {
-                    console.error("User denied account access")
-                }
-            } else if (window.web3) {
-                window.web3 = new Web3(web3.currentProvider);
-            } else {
-                console.log('Non-Ethereum browser detected. You should consider trying MetaMask!');
+                await window.ethereum.enable();
             }
 
-            // setup contract
-            const contractABI = [{"inputs":[],"name":"adminAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bool","name":"_freeReferrerRegistrationAllowed","type":"bool"}],"name":"allowFreeReferrerRegistration","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"btsRouterV1Address","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierID","type":"uint256"},{"internalType":"address","name":"_referrerAddress","type":"address"}],"name":"buyTier","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"_walletAddress","type":"address"}],"name":"changeWallet","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"defaultReferralDiscount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultReferrerCommission","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultReferrerSnipeFeeCut","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"freeReferrerRegistrationAllowed","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"hasMigrated","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"migrateTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"numReferrals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numReferrers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrerInfo","outputs":[{"internalType":"bool","name":"isReferrer","type":"bool"},{"internalType":"uint256","name":"referralDiscount","type":"uint256"},{"internalType":"uint256","name":"referrerCommission","type":"uint256"},{"internalType":"uint256","name":"referrerSnipeFeeCut","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"registerAsReferrer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_adminAddress","type":"address"}],"name":"setAdminAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferralDiscount","type":"uint256"}],"name":"setDefaultReferralDiscount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferrerCommission","type":"uint256"}],"name":"setDefaultReferrerCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferrerSnipeFeeCut","type":"uint256"}],"name":"setDefaultReferrerSnipeFeeCut","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referralDiscount","type":"uint256"}],"name":"setReferralDiscount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referrerCommission","type":"uint256"}],"name":"setReferrerCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referrerSnipeFeeCut","type":"uint256"}],"name":"setReferrerSnipeFeeCut","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierType","type":"uint256"},{"internalType":"uint256","name":"_tierPrice","type":"uint256"}],"name":"setTierPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierType","type":"uint256"},{"internalType":"uint256","name":"_tierSnipeFee","type":"uint256"}],"name":"setTierSnipeFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"},{"internalType":"uint256","name":"_tierType","type":"uint256"}],"name":"setUserTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"tierPrices","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"tierSnipeFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierID","type":"uint256"},{"internalType":"address","name":"_referrerAddress","type":"address"}],"name":"upgradeTier","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userReferrer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userTier","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}];
-            const contractAddress = 0x83804A48E21a499AebB4063c07cfAAA5cB37553f;
-            const contract = new web3.eth.Contract(contractABI, contractAddress);
-
-            // fetch the prices of the tiers from the contract and populate the select options
-            const tierSelection = document.getElementById('tierSelection');
+            // Get tier prices and populate select options
             for (let i = 1; i <= 4; i++) {
-                const tierPrice = await contract.methods.tierPrices(i).call();
-                const tierPriceInEther = web3.utils.fromWei(tierPrice, "ether");
-                const option = document.createElement("option");
+                const tierPriceInWei = await contract.methods.tierPrices(i).call();
+                const tierPriceInEther = web3.utils.fromWei(tierPriceInWei, 'ether');
+                let option = document.createElement("option");
                 option.text = `Tier ${i} (Price: ${tierPriceInEther} BNB)`;
                 option.value = i;
                 tierSelection.add(option);
             }
 
-            // check if there's a referrer in the URL
+            // Check if there's a referrer in the URL
             const urlParams = new URLSearchParams(window.location.search);
             const referrer = urlParams.get('r');
             if (referrer) {
-                document.getElementById('referrerAddress').value = referrer;
+                document.getElementById('referrerAddress').value = web3.utils.toChecksumAddress(referrer);
             }
 
-            // setup form submission handling
-            document.getElementById('buyTierForm').addEventListener('submit', (event) => {
+            // Setup form submission handling
+            document.getElementById('buyTierForm').addEventListener('submit', async (event) => {
                 event.preventDefault();
 
                 const tierId = tierSelection.value;
-                const referrerAddress = document.getElementById('referrerAddress').value;
-                const senderAddress = ethereum.selectedAddress;
-                let priceInWei;
-                switch (tierId) {
-                    case '1':
-                        priceInWei = web3.utils.toWei("0.5", "ether");
-                        break;
-                    case '2':
-                        priceInWei = web3.utils.toWei("1", "ether");
-                        break;
-                    case '3':
-                        priceInWei = web3.utils.toWei("2", "ether");
-                        break;
-                    case '4':
-                        priceInWei = web3.utils.toWei("4", "ether");
-                        break;
-                    default:
-                        console.log("Invalid Tier Id");
-                        return;
-                }
+                const referrerAddress = web3.utils.toChecksumAddress(document.getElementById('referrerAddress').value);
+                const senderAddress = web3.utils.toChecksumAddress(ethereum.selectedAddress);
+                const tierPriceInWei = await contract.methods.tierPrices(tierId).call();
 
-                contract.methods.buyTier(tierId, referrerAddress).send({ from: senderAddress, value: priceInWei })
+                contract.methods.buyTier(tierId, referrerAddress).send({ from: senderAddress, value: tierPriceInWei })
                     .then(receipt => {
                         document.getElementById('transactionHash').textContent = `Transaction hash: ${receipt.transactionHash}`;
                         // Show the modal
@@ -150,6 +107,24 @@
                     .catch(err => console.error(err));
             });
         });
+
+        // Get the modal
+        var modal = document.getElementById('myModal');
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
     </script>
 </body>
 </html>
