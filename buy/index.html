@@ -130,22 +130,28 @@
                 await window.ethereum.enable();
             }
 
+            var referralDiscount = 1;
+
+             // Check if there's a referrer in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const referrer = urlParams.get('r');
+
+            if (referrer) {
+                const referrerAddress = web3.utils.toChecksumAddress(referrer);
+                document.getElementById('referrerAddress').value = referrerAddress;
+                var referrerInfo = await contract.methods.referrerInfo().call();
+                referralDiscount = (10000 - referrerInfo[1]) / 10000;
+            }
+
             // Get tier prices and populate select options
             var tierNames = ['', 'Bronze', 'Silver', 'Diamond', 'Gold'];
             for (let i = 1; i <= 4; i++) {
                 const tierPriceInWei = await contract.methods.tierPrices(i).call();
-                const tierPriceInEther = web3.utils.fromWei(tierPriceInWei, 'ether');
+                const tierPriceInEther = web3.utils.fromWei(tierPriceInWei, 'ether') * referralDiscount;
                 let option = document.createElement("option");
                 option.text = `${tierNames[i]} Tier (Price: ${tierPriceInEther} BNB)`;
                 option.value = i;
                 tierSelection.add(option);
-            }
-
-            // Check if there's a referrer in the URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const referrer = urlParams.get('r');
-            if (referrer) {
-                document.getElementById('referrerAddress').value = web3.utils.toChecksumAddress(referrer);
             }
 
             // Setup form submission handling
@@ -157,7 +163,7 @@
                 const senderAddress = web3.utils.toChecksumAddress(ethereum.selectedAddress);
                 const tierPriceInWei = await contract.methods.tierPrices(tierId).call();
 
-                contract.methods.buyTier(tierId, referrerAddress).send({ from: senderAddress, value: tierPriceInWei })
+                contract.methods.buyTier(tierId, referrerAddress).send({ from: senderAddress, value: tierPriceInWei * referralDiscount })
                     .then(receipt => {
                         document.getElementById('transactionHash').textContent = `Transaction hash: ${receipt.transactionHash}`;
                         // Show the modal
