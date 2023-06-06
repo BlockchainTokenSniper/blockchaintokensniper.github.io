@@ -142,7 +142,7 @@
             }
 
             // Get tier prices and populate select options
-            var tierNames = ['', 'Bronze', 'Silver', 'Diamond', 'Gold'];
+            var tierNames = ['', 'Bronze', 'Silver', 'Gold', 'Diamond'];
             for (let i = 1; i <= 4; i++) {
                 const tierPriceInWei = await contract.methods.tierPrices(i).call();
                 const tierPriceInEther = web3.utils.fromWei(tierPriceInWei, 'ether') * referralDiscount;
