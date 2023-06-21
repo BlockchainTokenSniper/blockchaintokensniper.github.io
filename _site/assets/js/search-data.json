@@ -1,0 +1,219 @@
+{"0": {
+    "doc": "BlockchainLaunchSniper",
+    "title": "BlockchainLaunchSniper User Guide",
+    "content": "Here you can find all the information you need to setup and use BlockchainLaunchSniper. Current guide has been updated for BlockchainLaunchSniper v2.0.6 Beta. ",
+    "url": "/docs/user-guide/BlockchainLaunchSniper/#blockchainlaunchsniper-user-guide",
+    
+    "relUrl": "/docs/user-guide/BlockchainLaunchSniper/#blockchainlaunchsniper-user-guide"
+  },"1": {
+    "doc": "BlockchainLaunchSniper",
+    "title": "Prerequisites",
+    "content": ". | A Windows, Mac, or Linux computer | A reasonably fast internet connection | An ethereum-based wallet address and private key (not seed phrase) | A blockchain node (either use a free node or a private/full node) | Enough crypto in your wallet to snipe tokens / pay gas fees (and other paired tokens if you choose a different liquidity pair address, eg. BUSD) | A tier (if you haven’t got a tier yet, get one here). | . Make sure that the wallet you are using is the same wallet that you have used to buy a tier. ",
+    "url": "/docs/user-guide/BlockchainLaunchSniper/#prerequisites",
+    
+    "relUrl": "/docs/user-guide/BlockchainLaunchSniper/#prerequisites"
+  },"2": {
+    "doc": "BlockchainLaunchSniper",
+    "title": "How to install / run",
+    "content": ". | Download the latest version of the bot from the downloads page if you haven’t done so already. | Unzip the bot files into a new folder. | Windows: . | Edit the config.json file with your parameters. | In command prompt, navigate to the bot folder and run: BlockchainLaunchSniper-&lt;version&gt;.exe | . | Mac: . | Edit the config.json file with your parameters. | In terminal, navigate to the bot folder and run: ./BlockchainLaunchSniper-&lt;version&gt; | (If you have permission issues, you may need to go into Security and Privacy in system preferences and allow the BlockchainLaunchSniper to run) | . | Linux: . | Edit the config.json file with your parameters. | Navigate to the bot folder in terminal and run: ./BlockchainLaunchSniper-&lt;version&gt; | . | . Replace &lt;version&gt; with the executable version you are using, for example: ./BlockchainLaunchSniper-macos-arm64 . ",
+    "url": "/docs/user-guide/BlockchainLaunchSniper/#how-to-install--run",
+    
+    "relUrl": "/docs/user-guide/BlockchainLaunchSniper/#how-to-install--run"
+  },"3": {
+    "doc": "BlockchainLaunchSniper",
+    "title": "Config settings",
+    "content": "| Parameter | Meaning | . | walletAddress | Your wallet’s address. | . | walletPrivateKey | Private key for your wallet. | . | blockchainNode | Blockchain node URL. | . | routerAddress | Router address of the exchange you wish to snipe on (to find router addresses, go to supported blockchains / DEXs). | . | buyGasPrice | Price to pay for buy TX gas in gwei - best gas price depends on the network you are using. | . | buyGasLimit | Gas limit for buy TX - higher is better as TX’s are less likely to run out of gas, e.g., 3 million. | . | sellGasPrice | Price to pay for sell TX gas in gwei - best gas price depends on the network you are using. | . | sellGasLimit | Gas limit for sell TX - higher is better, e.g., 3 million. | . | txType | The transaction type identifier. TX types 0 and 2 are currently supported - use 0 for more basic networks like BSC, 2 for networks that support EIP-1559 standard like Polygon and Ethereum. | . | (0) buyGasPrice | The gas price to pay for buy transactions, measured in gwei. | . | (0) buyGasLimit | The gas limit for buy transactions. | . | (0) sellGasPrice | The gas price to pay for sell transactions, measured in gwei. | . | (0) sellGasLimit | The gas limit for sell transactions. | . | (2) buyMaxPriorityFeePerGas | The maximum priority fee per gas for buy transactions using EIP-1559. | . | (2) buyMaxFeePerGas | The maximum fee per gas for buy transactions using EIP-1559. | . | (2) buyGasLimit | The gas limit for buy transactions. | . | (2) sellMaxPriorityFeePerGas | The maximum priority fee per gas for sell transactions using EIP-1559. | . | (2) sellMaxFeePerGas | The maximum fee per gas for sell transactions using EIP-1559. | . | (2) buyGasLimit | The gas limit for buy transactions. | . | liquidityPairAddress | Liquidity pair address to use for sniping, e.g., BNB, BUSD, ETH. | . | sellTokens | Set to true by default. Set to false if you only want the bot to buy tokens and sell later. | . | transactionRevertTime | Amount of time in seconds before a buy transaction will revert. Recommended to set to a low time period, e.g., 30 seconds. | . | basicAutosell / stopLossMultiplier | Stop loss multiplier for basic autosell mode, e.g., if set to 0.5, the bot will sell tokens if the price goes below 0.5x. | . | basicAutoSell / autoSellMultiplier | Auto sell multiplier for basic autosell mode, e.g., if set to 2, the bot will sell tokens if the price goes above 2x. | . | sellAfterTimeDelay / blocksToWait | Amount of blocks to wait after buy TX until selling - block time depends on the network, e.g., for BSC, 10 = 30 seconds. | . | trailingStopLoss / minTrailingStopLossMultiplier | Minimum price multiplier before TSL will activate, e.g., if set to 2 then TSL will not work until the price is at least 2x. | . | trailingStopLoss / trailMultiplierAmount | Trail amount in price multiplier amount, e.g., if set to 0.5 and the price goes from 5x to below 0.45x, the bot would auto sell. | . | trailingStopLoss / trailingStopLossHardcap | Price multiplier hardcap, e.g., if set to 10 and the price hits 10x, the bot will sell - set to -1 to disable (no hardcap). | . | addLiquidityFunctionHashes | List of function hashes that will trigger the bot to buy when mempool sniping. Default should be fine in most cases. | . | tradingCheckerSettings / maxBuyFee | Max allowable buy fee for the token, e.g., if set to 25 then the token won’t be bought until the buy fee is under 25%. | . | tradingCheckerSettings / maxSellFee | Max allowable sell fee for the token, e.g., if set to 25 then the token won’t be bought until the sell fee is under 25%. | . | enableHotkeys | Enable hotkeys for sell mode 1 (manual selling), set to true unless you want to sell later on. | . | constantPriceLogging | If set to true, the bot will always log the price of the token for each block even if the price hasn’t changed. If set to false, the price will only be displayed again if the price has changed. | . Gas prices fluctuate frequently for each network. To get a good idea of what gas price to use, use a gas price checker tool such as CoinTool.app. ",
+    "url": "/docs/user-guide/BlockchainLaunchSniper/#config-settings",
+    
+    "relUrl": "/docs/user-guide/BlockchainLaunchSniper/#config-settings"
+  },"4": {
+    "doc": "BlockchainLaunchSniper",
+    "title": "Bot interface",
+    "content": "After the launch sniper has loaded and your configuration is correct, you will see a menu with multiple options: . | 1 - Snipe token when token address is provided. | 2 - Snipe token when liquidity is added. | 3 - Snipe token at certain time. | . 1: Will snipe a token as soon as the token address is entered. Using this mode, you can also enable the trading checker so the bot will not buy until trading is enabled. Note though that this method isn’t as fast as mempool sniping. 2: This option uses mempool sniping to snipe a token as soon as liquidity is added. Using the mode, you can buy the token in the same block as the add liquidity transaction and if you use enough gas you can be the first buyer. Please note that you will need a private node for this and you must use a websocket node URL (ws:// or wss://), or the bot will not work. 3: You can use this mode to snipe a token at a certain time. For example, if a token is due to launch at 12pm, then you can make the bot buy the token at 12:00:00. Please note however that if liquidity is not added by the time the bot buys then the buy TX will fail. ",
+    "url": "/docs/user-guide/BlockchainLaunchSniper/#bot-interface",
+    
+    "relUrl": "/docs/user-guide/BlockchainLaunchSniper/#bot-interface"
+  },"5": {
+    "doc": "BlockchainLaunchSniper",
+    "title": "Troubleshooting",
+    "content": ". | Incorrectly configured config.json file: if you encounter issues with the config.json file, you can use a JSON formatter/validator like CuriousConcept JSON formatter. Paste the contents of your config.json file into the validator, click on Process, and it will identify any issues. Make sure you have used the correct symbols, such as double quotes (“), single quotes (‘), braces ({ }), brackets ([ ]), etc. Also, ensure that you save the config.json file with the correct encoding (ANSI). | . ",
+    "url": "/docs/user-guide/BlockchainLaunchSniper/#troubleshooting",
+    
+    "relUrl": "/docs/user-guide/BlockchainLaunchSniper/#troubleshooting"
+  },"6": {
+    "doc": "BlockchainLaunchSniper",
+    "title": "Strategies",
+    "content": "Although the launch sniper does not guarantee profits, if you use the right strategy you can increase your chances of making good profits. Here are some key tips for maximising profit and sniping quickly: . | A fast computer or virtual private server (VPS). | A fast and reliable internet connection. | A private node: It is recommended to build your own node, such as a geth node, or use a reliable hosting service like Hetzner (eg. AX61-Nvme). | A sufficient investment amount: While you can invest any amount, investing 0.1 BNB or more (equivalent) generally yields better profits. | High gas fees: Higher gas fees, specifically a high gas price for buying, allow you to prioritise transactions and secure purchases at lower prices. | Trailing stop loss is recommended when selling to maximise profits. | . ",
+    "url": "/docs/user-guide/BlockchainLaunchSniper/#strategies",
+    
+    "relUrl": "/docs/user-guide/BlockchainLaunchSniper/#strategies"
+  },"7": {
+    "doc": "BlockchainLaunchSniper",
+    "title": "How to spot / avoid scams",
+    "content": "Crypto is unfortunately full of scams, however with some basic knowledge you can avoid the majority of them. The most common scam is a rugpull, where after the token has been active liquidity is withdrawn, resulting in loss of funds for everyone except the scammer. There are typically two ways this can happen: . | Removing liquidity: assuming there is no liquidity lock, the token developer sends a remove liquidity transaction, all the liquidity gets removed and all the funds end up in the scammer’s wallet. | Token minting: assuming there is a function in the token contract to mint (create) new tokens, the scammer will mint new tokens which goes to his address. This means that in relation to everyone else, the scammer will hold the vast majority of the total tokens available (eg. 99.99%). The scammer will sell all his newly minted tokens and he will get all or almost all of the remaining liquidity as his share of token supply is huge compared to everyone else. | . Another variation is a honeypot, where tokens can be bought but not sold, effectively trapping your funds so you can’t sell. The token will then likely be rug pulled later. To avoid scams: . | Check if the token contract address is available in the associated Telegram (TG) channel. Look for the pinned message and make sure it comes from an admin.  | Use a blockchain explorer (eg. etherscan.io, bscscan.com) to check if the token’s contract is verified. | Use tools like rugpulldetector.com to analyse the token’s code for any red flags.  | Be cautious of tokens without locked liquidity, as they are susceptible to rugpulls.  | It’s recommended to stay away from tokens if the contract address is unavailable before launch as people will not have enough time to audit the token and could easily fall for a scam. | . Additional tools to help detect and avoid scams: . | rugpulldetector.com | honeypot.is | app.staysafu.org/scanner | bscheck.eu | . Please bear in mind that these checks may not be 100% accurate all the time and you should use careful judgement when choosing what token to snipe. ",
+    "url": "/docs/user-guide/BlockchainLaunchSniper/#how-to-spot--avoid-scams",
+    
+    "relUrl": "/docs/user-guide/BlockchainLaunchSniper/#how-to-spot--avoid-scams"
+  },"8": {
+    "doc": "BlockchainLaunchSniper",
+    "title": "BlockchainLaunchSniper",
+    "content": " ",
+    "url": "/docs/user-guide/BlockchainLaunchSniper/",
+    
+    "relUrl": "/docs/user-guide/BlockchainLaunchSniper/"
+  },"9": {
+    "doc": "BlockchainMultiSniper",
+    "title": "BlockchainMultiSniper User Guide",
+    "content": "Here you can find all the information you need to setup and use BlockchainMultiSniper. Current guide has been updated for BlockchainMultiSniper v2.0.8 Beta. ",
+    "url": "/docs/user-guide/BlockchainMultiSniper/#blockchainmultisniper-user-guide",
+    
+    "relUrl": "/docs/user-guide/BlockchainMultiSniper/#blockchainmultisniper-user-guide"
+  },"10": {
+    "doc": "BlockchainMultiSniper",
+    "title": "Prerequisites",
+    "content": ". | A Windows, Mac, or Linux computer | A reasonably fast internet connection | An ethereum-based wallet address and private key (not seed phrase) | A blockchain node (either use a free node or a private/full node) | Enough crypto in your wallet to snipe tokens / pay gas fees (and other paired tokens if you choose a different liquidity pair address, eg. BUSD) | A tier (if you haven’t got a tier yet, get one here). | . Make sure that the wallet you are using is the same wallet that you have used to buy a tier. ",
+    "url": "/docs/user-guide/BlockchainMultiSniper/#prerequisites",
+    
+    "relUrl": "/docs/user-guide/BlockchainMultiSniper/#prerequisites"
+  },"11": {
+    "doc": "BlockchainMultiSniper",
+    "title": "How to install / run",
+    "content": ". | Download the latest version of the bot from the downloads page if you haven’t done so already. | Unzip the bot files into a new folder. | Windows: . | Edit the config.json file with your parameters. | In command prompt, navigate to the bot folder and run: BlockchainMultiSniper-&lt;version&gt;.exe | . | Mac: . | Edit the config.json file with your parameters. | In terminal, navigate to the bot folder and run: ./BlockchainMultiSniper-&lt;version&gt; | (If you have permission issues, you may need to go into Security and Privacy in system preferences and allow the BlockchainMultiSniper to run) | . | Linux: . | Edit the config.json file with your parameters. | Navigate to the bot folder in terminal and run: ./BlockchainMultiSniper-&lt;version&gt; | . | . Replace &lt;version&gt; with the executable version you are using, for example: ./BlockchainMultiSniper-macos-arm64 . ",
+    "url": "/docs/user-guide/BlockchainMultiSniper/#how-to-install--run",
+    
+    "relUrl": "/docs/user-guide/BlockchainMultiSniper/#how-to-install--run"
+  },"12": {
+    "doc": "BlockchainMultiSniper",
+    "title": "Config settings",
+    "content": "| Parameter | Meaning | . | walletAddress | Your wallet’s address. | . | walletPrivateKey | Private key for your wallet. | . | blockchainNode | Blockchain node URL. | . | routerAddress | Router address of the exchange you wish to snipe on (to find router addresses, go to supported blockchains / DEXs). | . | buyGasPrice | Price to pay for buy TX gas in gwei - best gas price depends on the network you are using. | . | buyGasLimit | Gas limit for buy TX - higher is better as TX’s are less likely to run out of gas, e.g., 3 million. | . | sellGasPrice | Price to pay for sell TX gas in gwei - best gas price depends on the network you are using. | . | sellGasLimit | Gas limit for sell TX - higher is better, e.g., 3 million. | . | txType | The transaction type identifier. TX types 0 and 2 are currently supported - use 0 for more basic networks like BSC, 2 for networks that support EIP-1559 standard like Polygon and Ethereum. | . | (0) buyGasPrice | The gas price to pay for buy transactions, measured in gwei. | . | (0) buyGasLimit | The gas limit for buy transactions. | . | (0) sellGasPrice | The gas price to pay for sell transactions, measured in gwei. | . | (0) sellGasLimit | The gas limit for sell transactions. | . | (2) buyMaxPriorityFeePerGas | The maximum priority fee per gas for buy transactions using EIP-1559. | . | (2) buyMaxFeePerGas | The maximum fee per gas for buy transactions using EIP-1559. | . | (2) buyGasLimit | The gas limit for buy transactions. | . | (2) sellMaxPriorityFeePerGas | The maximum priority fee per gas for sell transactions using EIP-1559. | . | (2) sellMaxFeePerGas | The maximum fee per gas for sell transactions using EIP-1559. | . | (2) buyGasLimit | The gas limit for buy transactions. | . | liquidityPairs | Liquidity pair addresses to use for sniping, e.g., BNB, BUSD, ETH, etc. | . | buyTokens | Set to true by default. Set to false if you only want the bot to buy tokens and sell later. | . | sellTokens | Set to true by default. Set to false if you only want the bot to buy tokens and sell later. | . | findOptimumLiquidityPair | Automatically check token trading with each liquidity to find the most price efficient pair. Set to true by default. | . | transactionRevertTime | Amount of time in seconds before a buy transaction will revert. Recommended to set to a low time period, e.g., 30 seconds. | . | sellMode | Choose which sell mode to use. 1 is for basic autosell, 2 for sell after time delay, 3 for trailing stop loss. | . | sellPercentage | Sets the amount of tokens you want to sell. Set to 100 by default (100%). | . | basicAutosell / stopLossMultiplier | Stop loss multiplier for basic autosell mode, e.g., if set to 0.5, the bot will sell tokens if the price goes below 0.5x. | . | basicAutoSell / autoSellMultiplier | Auto sell multiplier for basic autosell mode, e.g., if set to 2, the bot will sell tokens if the price goes above 2x. | . | sellAfterTimeDelay / blocksToWait | Amount of blocks to wait after buy TX until selling - block time depends on the network, e.g., for BSC, 10 = 30 seconds. | . | trailingStopLoss / minTrailingStopLossMultiplier | Minimum price multiplier before TSL will activate, e.g., if set to 2 then TSL will not work until the price is at least 2x. | . | trailingStopLoss / trailMultiplierAmount | Trail amount in price multiplier amount, e.g., if set to 0.5 and the price goes from 5x to below 0.45x, the bot would auto sell. | . | trailingStopLoss / trailingStopLossHardcap | Price multiplier hardcap, e.g., if set to 10 and the price hits 10x, the bot will sell - set to -1 to disable (no hardcap). | . | tradingCheckerSettings / maxBuyFee | Max allowable buy fee for token, e.g., if set to 25 then the token won’t be bought if the buy fee is over 25%. | . | tradingCheckerSettings / maxSellFee | Max allowable sell fee for token, e.g., if set to 25 then the token won’t be bought if the sell fee is over 25%. | . | tradingCheckerSettings / enableTradingCheck | Enable trading check to check if tokens are scams before trying to buy. Set to true by default. | . | telegramSettings / apiID | API ID for your Telegram account. You can obtain this by going to my.telegram.org and creating a new Telegram app. | . | telegramSettings / apiHash | API hash for your Telegram account. Obtain this in the same way as API ID (shown next to API ID). | . | telegramSettings / userID | (Optional): user ID for your Telegram account. Obtain this by using @getChatIDsBot on Telegram and select user / your username (might be called ‘saved messages’). Enter this if using Telegram notifications. | . | telegramChannels | Details about your Telegram channels. Add them in the bot menu. | . | enablePriceLogging | Enables price updates on bot console. Set to true by default. | . | constantPriceLogging | If set to true, the bot will always log the price of the token for each block even if the price hasn’t changed. If set to false, the price will only be displayed again if the price has changed. | . | enableTelegramNotifications | Allows bot to send you a Telegram message whenever it buys or sells a token. You must enter your userID to use this feature. | . Gas prices fluctuate frequently for each network. To get a good idea of what gas price to use, use a gas price checker tool such as CoinTool.app. Liquidity pairs must follow the following format: . \"liquidityPairs\": [ [ \"0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c\", 0.01, \"BNB\", 0.5, 10000 ], [ \"0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56\", 3, \"BUSD\", 10, 100000000 ] ] . 2 liquidity pairs are shown in the example above. For each liquidity pair, there are 5 required values: . | Liquidity pair address: the token address of the liquidity pair | Buy amount: the amount of the liquidity pair to buy eg. 0.01 for 0.01 BNB | Token symbol: the token symbol of the liquidity pair eg. BNB, ETH | Minimum liquidity amount: the minimum liquidity amount that the token to buy must have. | Maximum liquidity amount: the maximum liquidity amount that the token to buy must have. | . You must adhere to the correct standard or the bot will not work. If findOptimumLiquidityPair is enabled, make sure that the token buy amounts for each liquidity pair listed are approximately equal to each other in value, eg. in the example above we are assuming 0.01 BNB is approximately equal to 3 BUSD. The buy amounts need to be equal to each other so the bot can calculate the most price efficient pair when sniping a token. ",
+    "url": "/docs/user-guide/BlockchainMultiSniper/#config-settings",
+    
+    "relUrl": "/docs/user-guide/BlockchainMultiSniper/#config-settings"
+  },"13": {
+    "doc": "BlockchainMultiSniper",
+    "title": "Bot interface",
+    "content": "After the bot has loaded and your configuration is correct, you will see a menu with multiple options. Use option 1 to run the bot and option 2 to add Telegram channels. Follow the steps in the bot to add / remove Telegram channels. ",
+    "url": "/docs/user-guide/BlockchainMultiSniper/#bot-interface",
+    
+    "relUrl": "/docs/user-guide/BlockchainMultiSniper/#bot-interface"
+  },"14": {
+    "doc": "BlockchainMultiSniper",
+    "title": "Troubleshooting",
+    "content": ". | Incorrectly configured config.json file: if you encounter issues with the config.json file, you can use a JSON formatter/validator like CuriousConcept JSON formatter. Paste the contents of your config.json file into the validator, click on Process, and it will identify any issues. Make sure you have used the correct symbols, such as double quotes (\\”), single quotes (‘), braces ({ }), brackets ([ ]), etc. Also, ensure that you save the config.json file with the correct encoding (ANSI). | . ",
+    "url": "/docs/user-guide/BlockchainMultiSniper/#troubleshooting",
+    
+    "relUrl": "/docs/user-guide/BlockchainMultiSniper/#troubleshooting"
+  },"15": {
+    "doc": "BlockchainMultiSniper",
+    "title": "How to spot / avoid scams",
+    "content": "Crypto is unfortunately full of scams, however with some basic knowledge you can avoid the majority of them. The most common scam is a rugpull, where after the token has been active liquidity is withdrawn, resulting in loss of funds for everyone except the scammer. There are typically two ways this can happen: . | Removing liquidity: assuming there is no liquidity lock, the token developer sends a remove liquidity transaction, all the liquidity gets removed and all the funds end up in the scammer’s wallet. | Token minting: assuming there is a function in the token contract to mint (create) new tokens, the scammer will mint new tokens which goes to his address. This means that in relation to everyone else, the scammer will hold the vast majority of the total tokens available (eg. 99.99%). The scammer will sell all his newly minted tokens and he will get all or almost all of the remaining liquidity as his share of token supply is huge compared to everyone else. | . Another variation is a honeypot, where tokens can be bought but not sold, effectively trapping your funds so you can’t sell. The token will then likely be rug pulled later. To avoid scams: . | Use reputable Telegram channels. Some popular channels are @cmc_fastest_alerts and @cg_fastest_alerts, although you will have to research. | Check if the token contract address is available in the associated Telegram (TG) channel. Look for the pinned message and make sure it comes from an admin. | Use a blockchain explorer (bscscan.com) to check if the token’s contract is verified. | Use tools like rugpulldetector.com to analyse the token’s code for any red flags. | Be cautious of tokens without locked liquidity, as they are susceptible to rugpulls. | . Additional tools to help detect and avoid scams: . | rugpulldetector.com | honeypot.is | app.staysafu.org/scanner | bscheck.eu | . Please bear in mind that these checks may not be 100% accurate all the time and you should use careful judgement when choosing what token to snipe. ",
+    "url": "/docs/user-guide/BlockchainMultiSniper/#how-to-spot--avoid-scams",
+    
+    "relUrl": "/docs/user-guide/BlockchainMultiSniper/#how-to-spot--avoid-scams"
+  },"16": {
+    "doc": "BlockchainMultiSniper",
+    "title": "BlockchainMultiSniper",
+    "content": " ",
+    "url": "/docs/user-guide/BlockchainMultiSniper/",
+    
+    "relUrl": "/docs/user-guide/BlockchainMultiSniper/"
+  },"17": {
+    "doc": "Contact",
+    "title": "Contact",
+    "content": "Ask a question in the Telegram group: @BlockchainTokenSniper . Contact the main developer: @BytePhoenix . ",
+    "url": "/docs/contact/",
+    
+    "relUrl": "/docs/contact/"
+  },"18": {
+    "doc": "Downloads",
+    "title": "Downloads",
+    "content": "You can download the latest versions of the bots here on GitHub. ",
+    "url": "/docs/downloads/",
+    
+    "relUrl": "/docs/downloads/"
+  },"19": {
+    "doc": "Home",
+    "title": "Try out 2 of the most advanced crypto sniping bots today.",
+    "content": "BlockchainTokenSniper is a collection of advanced crypto sniping bots, including features such as mempool sniping, Telegram channel sniping, multiple sell modes and more for efficient sniping and maximum profit. Get started Join Telegram group . BlockchainTokenSniper is currently in beta and is still being tested. We are working hard to add new features and fix any bugs we become aware of, although if you find a bug or have any other suggestions / questions please don’t hesitate to contact @BytePhoenix on Telegram. BlockchainTokenSniper currently consists of 2 bots: . | BlockchainLaunchSniper | BlockchainMultiSniper | . BlockchainLaunchSniper . BlockchainLaunchSniper is a bot that can automatically buy / snipe a new token and sell it when profitable on any exchange on any configured EVM-compatible blockchain. The bot allows you to snipe new token launches paired with any token (e.g. BNB, BUSD, ETH). It has the ability to mempool snipe and will instantly buy when liquidity is added, sniping in the same block as the add liquidity transaction. It updates the price and shows you the profit you’ve made and has 4 sell modes (manual selling with hotkeys, basic autosell, sell after time delay or trailing stop loss). Features: . | Supports Windows, Mac &amp; Linux | Supports multiple sniping options: . | mempool sniping | buying after trading is enabled | buying as soon as token address is entered | buying at certain timestamp | . | Multiple sell modes: . | Manual selling with hotkeys | Basic auto-sell | Sell after time delay | Trailing stop loss | . | Honeypot / antibot checker (can repeatedly check token each block until tradable) | Partial sell (eg. sell 10-90% of tokens with hotkeys then sell the rest later) | Configurable anti-bot delay (e.g. wait X amount of seconds before sniping) | Price updates every block showing current block, profit multiplier (eg. 1.5x, 2x) and current value of tokens | Easy-to-use config file to change a wide variety of settings | And much more… | . BlockchainMultiSniper . BlockchainMultiSniper is a bot that automatically buys new tokens from Telegram channels and sells them when profitable on any exchange on any configured EVM-compatible blockchain. The bot allows you to buy new tokens paired with any token (e.g. BNB, BUSD, ETH). The bot updates the price of each token and shows you the profit you’ve made. It also has 3 sell modes (basic autosell, sell after time delay or trailing stop loss). Features: . | Supports Windows, Mac &amp; Linux | Supports public and private Telegram channels | Supports whitelisted and blacklisted text | Multiple sell modes: . | Basic auto-sell | Sell after time delay | Trailing stop loss | . | Honeypot / antibot checker (can repeatedly check token each block until tradable) | Supports multiple liquidity pairs | Can compare different liquidity pairs with tokens to find most price-efficient pair | Can configure sell percentage to be less than 100% (eg. set to 90 to keep 10% of tokens) | Easy-to-use config file to change a wide variety of settings | Price updates every block showing current block, profit multiplier (eg. 1.5x, 2x) and current value of tokens | And much more… | . Both bots currently support the following networks: . | BSC Mainnet (56) | Polygon Mainnet (137) | BSC Testnet (97) | . Support for Ethereum will be coming soon, however more testing is required first before deployment as Ethereum gas fees are alot higher than other networks. ",
+    "url": "/#try-out-2-of-the-most-advanced-crypto-sniping-bots-today",
+    
+    "relUrl": "/#try-out-2-of-the-most-advanced-crypto-sniping-bots-today"
+  },"20": {
+    "doc": "Home",
+    "title": "How to start sniping?",
+    "content": "To use the bots, you will need to purchase a tier. Once you buy a tier you will have unlimited lifetime access to both bots and any further bots in the future. You can buy a tier here. Once you’ve bought a tier, go to the Downloads section and download each bot. Alternatively, download either bot, setup the config with your details and the bot will automatically prompt you to buy a tier. The following tiers are available: . | Tier | Price | Snipe fee | . | Bronze | 0.5 BNB | 10% | . | Silver | 1 BNB | 7.5% | . | Gold | 2 BNB | 5% | . | Diamond | 10 BNB | 0% | . (Tier prices subject to change) . The bot has a snipe fee system where if a user makes a profit on a snipe a small fee will be taken from the profit. No fees are taken if the user breaks even or makes a loss. For example, if a user has a Bronze tier, buys a token with 1 BNB and sells for 10 BNB, they have made a profit of 9 BNB and a 0.9 BNB fee will be taken. ",
+    "url": "/#how-to-start-sniping",
+    
+    "relUrl": "/#how-to-start-sniping"
+  },"21": {
+    "doc": "Home",
+    "title": "Home",
+    "content": " ",
+    "url": "/",
+    
+    "relUrl": "/"
+  },"22": {
+    "doc": "Migrating from V1",
+    "title": "Migrating from V1 to V2",
+    "content": "If you used to have a tier on BTS V1 then you will have to migrate your tier to work on BTS V2. Migrating is completely free (small gas fee applies). To migrate, download and run either the launch or multi sniper bot and you will be automatically prompted to migrate your tier. ",
+    "url": "/docs/migration/#migrating-from-v1-to-v2",
+    
+    "relUrl": "/docs/migration/#migrating-from-v1-to-v2"
+  },"23": {
+    "doc": "Migrating from V1",
+    "title": "Migrating from V1",
+    "content": " ",
+    "url": "/docs/migration/",
+    
+    "relUrl": "/docs/migration/"
+  },"24": {
+    "doc": "Referral system",
+    "title": "Referral system",
+    "content": "Using our referral system, you can refer another user if they use your referral address. If you refer a user, you will get: . | 20% of the price of their tier (eg. if a user that you refer buys a Silver tier for 1 BNB, you will earn 0.2 BNB) | 20% of their snipe fees (eg. if a user that you refer makes a 1 BNB profit on a snipe, you will earn 0.2 BNB) | . ",
+    "url": "/docs/referral-system/",
+    
+    "relUrl": "/docs/referral-system/"
+  },"25": {
+    "doc": "Referral system",
+    "title": "How to become a referrer?",
+    "content": ". | Go to the BTSManagerV2 contract. | Connect your wallet. | Go to the ‘registerAsReferrer’ tab (number 5). | Click ‘Write’. | Approve transaction (will cost a small gas fee). | . Once you have registered as a referrer, you can now share your referral link with others. If a user buys a tier via your link, you will earn commission and a portion of future snipe fees. Link format: blockchaintokensniper.github.io/buy?r=YOURADDRESSHERE . ",
+    "url": "/docs/referral-system/#how-to-become-a-referrer",
+    
+    "relUrl": "/docs/referral-system/#how-to-become-a-referrer"
+  },"26": {
+    "doc": "Smart contracts",
+    "title": "Smart contracts",
+    "content": "BTSManagerV2 . | 0x83804A48E21a499AebB4063c07cfAAA5cB37553f (BSC mainnet) | . The BTSManagerV2 contract handles many functions such as buying / upgrading tiers, setting key variables, allowing users to change wallets etc. BTSRouterV2 (multi-chain) . | Network | Contract Address | . | BSC mainnet | 0x5815b69b2564935667F719AcACBB46CCeb36871B | . | BSC testnet | 0xDAd45E2Fb4e6229bF3f11F50682aDF68221Fc7A6 | . | Polygon mainnet | 0x96Ccc12A957E9B75a2040b3FCF986d775f12BDad | . The BTSRouterV2 contracts are deployed separately on each blockchain. The BTSRouterV2 contracts allow users to snipe and sell tokens and handle a range of other tasks eg. calculating profit, taking snipe fees, checking token values etc. ",
+    "url": "/docs/smart-contracts/",
+    
+    "relUrl": "/docs/smart-contracts/"
+  },"27": {
+    "doc": "Supported blockchains / DEXs",
+    "title": "Supported Blockchains &amp; DEX’s",
+    "content": " ",
+    "url": "/docs/supported-blockchains/#supported-blockchains--dexs",
+    
+    "relUrl": "/docs/supported-blockchains/#supported-blockchains--dexs"
+  },"28": {
+    "doc": "Supported blockchains / DEXs",
+    "title": "The following blockchains are currently supported:",
+    "content": "BSC mainnet (56) . Supported DEX’s: . | DEX | Router Address | . | PancakeSwap V2 | 0x10ED43C718714eb63d5aA57B78B54704E256024E | . BSC testnet (97) . Supported DEX’s: . | DEX | Router Address | . | PancakeSwap V2 | 0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3 | . Polygon mainnet (137) . Supported DEX’s: . | DEX | Router Address | . | QuickSwap V2 | 0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff | . ",
+    "url": "/docs/supported-blockchains/#the-following-blockchains-are-currently-supported",
+    
+    "relUrl": "/docs/supported-blockchains/#the-following-blockchains-are-currently-supported"
+  },"29": {
+    "doc": "Supported blockchains / DEXs",
+    "title": "Supported blockchains / DEXs",
+    "content": " ",
+    "url": "/docs/supported-blockchains/",
+    
+    "relUrl": "/docs/supported-blockchains/"
+  },"30": {
+    "doc": "User Guides",
+    "title": "User Guides",
+    "content": "Find information below about configuring bots below. ",
+    "url": "/docs/user-guide/user-guides/",
+    
+    "relUrl": "/docs/user-guide/user-guides/"
+  }
+}
