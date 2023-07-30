@@ -258,6 +258,9 @@
                               <td style="text-align: left">findOptimumLiquidityPair
                               <td style="text-align: left">Automatically check token trading with each liquidity to find the most price efficient pair. Set to true by default.
                            <tr>
+                              <td style="text-align: left">processPairAddresses
+                              <td style="text-align: left">Automatically check contract addresses in messages to see if it is a pair address. If it is then it will extract token address and buy token.
+                           <tr>
                               <td style="text-align: left">transactionRevertTime
                               <td style="text-align: left">Amount of time in seconds before a buy transaction will revert. Recommended to set to a low time period, e.g., 30 seconds.
                            <tr>
@@ -276,13 +279,13 @@
                               <td style="text-align: left">sellAfterTimeDelay / blocksToWait
                               <td style="text-align: left">Amount of blocks to wait after buy TX until selling - block time depends on the network, e.g., for BSC, 10 = 30 seconds.
                            <tr>
-                              <td style="text-align: left">trailingStopLoss / minTrailingStopLossMultiplier
+                              <td style="text-align: left">trailingStopLoss / minMultiplier
                               <td style="text-align: left">Minimum price multiplier before TSL will activate, e.g., if set to 2 then TSL will not work until the price is at least 2x.
                            <tr>
                               <td style="text-align: left">trailingStopLoss / trailMultiplierAmount
                               <td style="text-align: left">Trail amount in price multiplier amount, e.g., if set to 0.5 and the price goes from 5x to below 0.45x, the bot would auto sell.
                            <tr>
-                              <td style="text-align: left">trailingStopLoss / trailingStopLossHardcap
+                              <td style="text-align: left">trailingStopLoss / hardcap
                               <td style="text-align: left">Price multiplier hardcap, e.g., if set to 10 and the price hits 10x, the bot will sell - set to -1 to disable (no hardcap).
                            <tr>
                               <td style="text-align: left">tradingCheckerSettings / maxBuyFee
