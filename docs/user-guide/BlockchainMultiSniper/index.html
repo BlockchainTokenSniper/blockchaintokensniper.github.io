@@ -201,20 +201,11 @@
                               <td style="text-align: left">routerAddress
                               <td style="text-align: left">Router address of the exchange you wish to snipe on (to find router addresses, go to <a href="/docs/supported-blockchains">supported blockchains / DEXs</a>).
                            <tr>
-                              <td style="text-align: left">buyGasPrice
-                              <td style="text-align: left">Price to pay for buy TX gas in gwei - best gas price depends on the network you are using.
-                           <tr>
-                              <td style="text-align: left">buyGasLimit
-                              <td style="text-align: left">Gas limit for buy TX - higher is better as TX’s are less likely to run out of gas, e.g., 3 million.
-                           <tr>
-                              <td style="text-align: left">sellGasPrice
-                              <td style="text-align: left">Price to pay for sell TX gas in gwei - best gas price depends on the network you are using.
-                           <tr>
-                              <td style="text-align: left">sellGasLimit
-                              <td style="text-align: left">Gas limit for sell TX - higher is better, e.g., 3 million.
-                           <tr>
                               <td style="text-align: left">txType
                               <td style="text-align: left">The transaction type identifier. TX types 0 and 2 are currently supported - use 0 for more basic networks like BSC, 2 for networks that support EIP-1559 standard like Polygon and Ethereum.
+                           <tr>
+                              <td style="text-align: left">(0) autoFeeCalculation
+                              <td style="text-align: left">Automatically determine best gas price - overrides buyGasPrice, set to true to enable.                         
                            <tr>
                               <td style="text-align: left">(0) buyGasPrice
                               <td style="text-align: left">The gas price to pay for buy transactions, measured in gwei.
@@ -227,6 +218,12 @@
                            <tr>
                               <td style="text-align: left">(0) sellGasLimit
                               <td style="text-align: left">The gas limit for sell transactions.
+                           <tr>
+                              <td style="text-align: left">(2) autoFeeCalculation
+                              <td style="text-align: left">Automatically determine best gas price - overrides buyGasPrice, set to true to enable. 
+                           <tr>
+                              <td style="text-align: left">(2) autoFeePriority
+                              <td style="text-align: left">Determines how much gas you are willing to pay for TX. Acceptable values: 'LOW', 'MEDIUM', 'HIGH'.
                            <tr>
                               <td style="text-align: left">(2) buyMaxPriorityFeePerGas
                               <td style="text-align: left">The maximum priority fee per gas for buy transactions using EIP-1559.
@@ -249,11 +246,17 @@
                               <td style="text-align: left">liquidityPairs
                               <td style="text-align: left">Liquidity pair addresses to use for sniping, e.g., BNB, BUSD, ETH, etc.
                            <tr>
+                              <td style="text-align: left">simulationMode
+                              <td style="text-align: left">Simulate token buying / selling without spending anything (ie. paper trading). Set to true to enable.
+                           <tr>
                               <td style="text-align: left">buyTokens
                               <td style="text-align: left">Set to true by default. Set to false if you only want the bot to buy tokens and sell later.
                            <tr>
                               <td style="text-align: left">sellTokens
                               <td style="text-align: left">Set to true by default. Set to false if you only want the bot to buy tokens and sell later.
+                           <tr>
+                              <td style="text-align: left">maxAllowedSnipes
+                              <td style="text-align: left">Number of tokens the bot will buy before stopping buying. Set to any number or -1 to disable (no limit).
                            <tr>
                               <td style="text-align: left">findOptimumLiquidityPair
                               <td style="text-align: left">Automatically check token trading with each liquidity to find the most price efficient pair. Set to true by default.
