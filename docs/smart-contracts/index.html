@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <link rel="stylesheet" href="/assets/css/just-the-docs-default.css">
-    <script src="/assets/js/vendor/lunr.min.js"></script>
-    <script src="/assets/js/just-the-docs.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <title>Smart contracts | BlockchainTokenSniper</title>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+      <link rel="stylesheet" href="../../assets/css/just-the-docs-default.css">
+      <script src="../../assets/js/vendor/lunr.min.js"></script>
+      <script src="../../assets/js/just-the-docs.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+      <title>Smart contracts | BlockchainTokenSniper</title>
     <meta name="generator" content="Jekyll v4.3.2" />
     <meta property="og:title" content="Smart contracts" />
     <meta property="og:locale" content="en_US" />
@@ -90,7 +90,7 @@
     </svg>
     <div class="side-bar">
       <div class="site-header" role="banner">
-        <a href="/" class="site-title lh-tight"> BlockchainTokenSniper </a>
+        <a href="../../index.html" class="site-title lh-tight"> BlockchainTokenSniper </a>
         <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
           <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
             <use xlink:href="#svg-menu"></use>
@@ -100,31 +100,31 @@
       <nav aria-label="Main" id="site-nav" class="site-nav">
         <ul class="nav-list">
           <li class="nav-list-item">
-            <a href="/" class="nav-list-link">Home</a>
+            <a href="../../index.html" class="nav-list-link">Home</a>
           <li class="nav-list-item">
-            <a href="/docs/contact/" class="nav-list-link">Contact</a>
+            <a href="../contact/index.html" class="nav-list-link">Contact</a>
           <li class="nav-list-item">
-            <a href="/docs/downloads/" class="nav-list-link">Downloads</a>
+            <a href="../downloads/index.html" class="nav-list-link">Accessing BTS V3</a>
           <li class="nav-list-item">
-            <a href="/docs/migration/" class="nav-list-link">Migrating from V1</a>
+            <a href="../migration/index.html" class="nav-list-link">Information on V3</a>
           <li class="nav-list-item">
-            <a href="/docs/referral-system/" class="nav-list-link">Referral system</a>
+            <a href="../referral-system/index.html" class="nav-list-link">Referral system</a>
           <li class="nav-list-item active">
-            <a href="/docs/smart-contracts/" class="nav-list-link active">Smart contracts</a>
+            <a href="../smart-contracts/index.html" class="nav-list-link active">Smart contracts</a>
           <li class="nav-list-item">
-            <a href="/docs/supported-blockchains/" class="nav-list-link">Supported blockchains / DEXs</a>
+            <a href="../supported-blockchains/index.html" class="nav-list-link">Supported blockchains / DEXs</a>
           <li class="nav-list-item">
             <button class="nav-list-expander btn-reset" aria-label="toggle items in User Guides category" aria-pressed="false">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <use xlink:href="#svg-arrow-right"></use>
               </svg>
             </button>
-            <a href="/docs/user-guide/user-guides/" class="nav-list-link">User Guides</a>
+            <a href="../user-guide/user-guides/index.html" class="nav-list-link">User Guides</a>
             <ul class="nav-list">
               <li class="nav-list-item ">
-                <a href="/docs/user-guide/BlockchainLaunchSniper/" class="nav-list-link">BlockchainLaunchSniper</a>
+                <a href="../user-guide/BlockchainLaunchSniper/index.html" class="nav-list-link">BlockchainLaunchSniper Module (V3)</a>
               <li class="nav-list-item ">
-                <a href="/docs/user-guide/BlockchainMultiSniper/" class="nav-list-link">BlockchainMultiSniper</a>
+                <a href="../user-guide/BlockchainMultiSniper/index.html" class="nav-list-link">BlockchainMultiSniper Module (V3)</a>
             </ul>
         </ul>
       </nav>
@@ -147,54 +147,65 @@
       <div id="main-content-wrap" class="main-content-wrap">
         <div id="main-content" class="main-content">
           <main>
-            <h1 class="no_toc" id="smart-contracts">
-              <a href="#smart-contracts" class="anchor-heading" aria-labelledby="smart-contracts">
+            <h1 class="no_toc" id="smart-contracts-v3">
+              <a href="#smart-contracts-v3" class="anchor-heading" aria-labelledby="smart-contracts-v3">
                 <svg viewBox="0 0 16 16" aria-hidden="true">
                   <use xlink:href="#svg-link"></use>
                 </svg>
-              </a> Smart contracts
+              </a> Smart Contracts (V3)
             </h1>
-            <h3 id="btsmanagerv2">
-              <a href="#btsmanagerv2" class="anchor-heading" aria-labelledby="btsmanagerv2">
+            <p>BlockchainTokenSniper V3 interacts with a combination of its own custom smart contracts and standard decentralized exchange (DEX) contracts to perform its functions. All user interactions for tier management and bot operations are handled via the <code>@btsv3bot</code> Telegram bot, which then communicates with these contracts on the backend.</p>
+            
+            <h3 id="btsmanagerv2-v3">
+              <a href="#btsmanagerv2-v3" class="anchor-heading" aria-labelledby="btsmanagerv2-v3">
                 <svg viewBox="0 0 16 16" aria-hidden="true">
                   <use xlink:href="#svg-link"></use>
                 </svg>
-              </a> BTSManagerV2
+              </a> BTSManagerV2 (Management & Tiers)
             </h3>
+            <p>The <code>BTSManagerV2</code> contract continues to play a role in V3, primarily for managing user tiers, processing tier payments, and handling aspects of the referral system. Users interact with these functions indirectly through the Telegram bot's menus.</p>
             <ul>
-              <li>
-                <a target="_blank" href="https://bscscan.com/address/0x83804A48E21a499AebB4063c07cfAAA5cB37553f">0x83804A48E21a499AebB4063c07cfAAA5cB37553f (BSC mainnet)</a>
+              <li>Example (BSC Mainnet): <a target="_blank" href="https://bscscan.com/address/0x83804A48E21a499AebB4063c07cfAAA5cB37553f">0x83804A48E21a499AebB4063c07cfAAA5cB37553f</a> (Address may vary or be updated; always refer to official announcements if direct interaction were ever needed, though V3 is designed for bot-only interaction for users).</li>
             </ul>
-            <p>The BTSManagerV2 contract handles many functions such as buying / upgrading tiers, setting key variables, allowing users to change wallets etc.</p>
-            <h3 id="btsrouterv2-multi-chain">
-              <a href="#btsrouterv2-multi-chain" class="anchor-heading" aria-labelledby="btsrouterv2-multi-chain">
+            <p>Key functions managed by or through this contract (via the bot):</p>
+            <ul>
+              <li>Tier purchasing and upgrades.</li>
+              <li>Referral registration and commission payouts for tier sales.</li>
+              <li>Management of user wallet addresses associated with tiers.</li>
+            </ul>
+
+            <h3 id="tradingcheckerv1-v3">
+              <a href="#tradingcheckerv1-v3" class="anchor-heading" aria-labelledby="tradingcheckerv1-v3">
                 <svg viewBox="0 0 16 16" aria-hidden="true">
                   <use xlink:href="#svg-link"></use>
                 </svg>
-              </a> BTSRouterV2 (multi-chain)
+              </a> TradingCheckerV1 (Pre-Trade Safety Checks)
             </h3>
-            <div class="table-wrapper">
-              <table>
-                <thead>
-                  <tr>
-                    <th style="text-align: left">Network
-                    <th style="text-align: left">Contract Address
-                <tbody>
-                  <tr>
-                    <td style="text-align: left">Ethereum mainnet
-                    <td style="text-align: left">0x9A74d498F9Da6984cFDCbc41261260E65EA324Fc
-                  <tr>
-                    <td style="text-align: left">BSC mainnet
-                    <td style="text-align: left">0x5aE04252337C3bB44853b8Ef3342E21aaA1C115E
-                  <tr>
-                    <td style="text-align: left">BSC testnet
-                    <td style="text-align: left">0x5d399E4AB78Cd3f9EE5Bc55B6A55186fE2C386E4
-                  <tr>
-                    <td style="text-align: left">Polygon mainnet
-                    <td style="text-align: left">0xfdaadbeD1d99cfD21BfF257caBC7D1B79C034b05
-              </table>
-            </div>
-            <p>The BTSRouterV2 contracts are deployed separately on each blockchain. The BTSRouterV2 contracts allow users to snipe and sell tokens and handle a range of other tasks eg. calculating profit, taking snipe fees, checking token values etc.</p>
+            <p>BTS V3 utilizes a custom <code>TradingCheckerV1</code> smart contract to perform pre-trade safety checks. This helps protect users by analyzing tokens for common issues before a buy transaction is attempted.</p>
+            <p>Source code for this contract can be found in the project's <code>contracts/</code> directory (<code>TradingCheckerV1.sol</code>). Its ABI is located in <code>ABI/TradingCheckerABI.json</code>.</p>
+            <p>Key checks performed by this contract (invoked by the bot):</p>
+            <ul>
+              <li>Honeypot detection (checks if a token can be sold after buying).</li>
+              <li>Buy/Sell tax analysis (ensures taxes are within user-defined limits).</li>
+            </ul>
+
+            <h3 id="dex-and-token-contracts-standard-interactions-v3">
+              <a href="#dex-and-token-contracts-standard-interactions-v3" class="anchor-heading" aria-labelledby="dex-and-token-contracts-standard-interactions-v3">
+                <svg viewBox="0 0 16 16" aria-hidden="true">
+                  <use xlink:href="#svg-link"></use>
+                </svg>
+              </a> DEX and Token Contracts (Standard Interactions)
+            </h3>
+            <p>For actual buying and selling of tokens, BTS V3 interacts directly with standard Decentralized Exchange (DEX) router contracts (e.g., UniswapV2-like routers such as PancakeSwap Router) and standard ERC20 token contracts.</p>
+            <p>The bot uses standard ABIs for these interactions, including:</p>
+            <ul>
+              <li><code>ABI/ERC20ABI.json</code>: For interacting with ERC20 tokens (balance checks, approvals).</li>
+              <li><code>ABI/UniswapV2ABI.json</code>: For interacting with UniswapV2-compatible DEX routers (swapping tokens, adding/removing liquidity if ever needed by advanced features).</li>
+              <li><code>ABI/UniswapV2FactoryABI.json</code>: For fetching pair addresses from DEX factories.</li>
+              <li><code>ABI/pairABI.json</code>: For interacting directly with liquidity pair contracts (e.g., to get reserves).</li>
+            </ul>
+            <p>The specific router addresses for supported DEXs on each chain are configured within the bot's <code>network_config.json</code> file and selected by the user (or automatically) through the Telegram interface.</p>
+            <p class="note">In V3, the previous custom <code>BTSRouterV2</code> contracts for direct trading have been largely superseded by direct interaction with standard DEX protocols, offering greater flexibility and compatibility.</p>
           </main>
           <hr>
           <footer>

@@ -1,192 +1,72 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
-    <title>Buy Tier</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="../assets/css/just-the-docs-default.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../favicon.ico" type="image/x-icon">
+    <title>Buy Tier | BlockchainTokenSniper V3</title>
+    <meta name="description" content="Information on purchasing tiers for BlockchainTokenSniper V3">
     <style>
-        /* The Modal (background) */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-        }
-
-        /* Modal Content/Box */
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
-        }
-
-        /* The Close Button */
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             background-color: #f9f9f9;
-        }
-
-        h1 {
-            color: black;
-            padding: 20px 0;
-            margin: 0;
             text-align: center;
         }
-
-        form {
-            margin: 50px auto;
-            width: 80%;
-            max-width: 500px;
-            padding: 20px;
-            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        .container {
             background-color: white;
-            border-radius: 5px;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 40px auto;
         }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            font-size: 16px;
+        h1 {
+            color: #333;
         }
-
-        input[type="text"], select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
         }
-
-        input[type="submit"] {
-            background-color: #3498db;
+        .telegram-button {
+            display: inline-block;
+            background-color: #0088cc;
             color: white;
-            border: none;
+            padding: 12px 25px;
+            margin-top: 20px;
             border-radius: 5px;
-            padding: 15px 30px;
-            font-size: 16px;
-            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
         }
-
-        input[type="submit"]:hover {
-            background-color: #2980b9;
+        .telegram-button:hover {
+            background-color: #0077b3;
         }
-
+        .home-link {
+            display: block;
+            margin-top: 30px;
+            color: #0088cc;
+            text-decoration: none;
+        }
+        .home-link:hover {
+            text-decoration: underline;
+        }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.0/dist/web3.min.js"></script>
 </head>
 <body>
-    <h1>Buy Tier</h1>
-    <form id="buyTierForm">
-        <label for="tierSelection">Select Tier:</label>
-        <select id="tierSelection" required></select>
-        <input type="submit" value="Buy Tier">
-    </form>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <p id="transactionHash"></p>
-        </div>
-    </div>
-
-    <script>
-        const web3 = new Web3(window.ethereum);
-
-        const contractABI = [{"inputs":[],"name":"adminAddress","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bool","name":"_freeReferrerRegistrationAllowed","type":"bool"}],"name":"allowFreeReferrerRegistration","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"btsRouterV1Address","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierID","type":"uint256"},{"internalType":"address","name":"_referrerAddress","type":"address"}],"name":"buyTier","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"_walletAddress","type":"address"}],"name":"changeWallet","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"defaultReferralDiscount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultReferrerCommission","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"defaultReferrerSnipeFeeCut","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"freeReferrerRegistrationAllowed","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"hasMigrated","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"migrateTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"numReferrals","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numReferrers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"numUsers","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"referrerInfo","outputs":[{"internalType":"bool","name":"isReferrer","type":"bool"},{"internalType":"uint256","name":"referralDiscount","type":"uint256"},{"internalType":"uint256","name":"referrerCommission","type":"uint256"},{"internalType":"uint256","name":"referrerSnipeFeeCut","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"registerAsReferrer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_adminAddress","type":"address"}],"name":"setAdminAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferralDiscount","type":"uint256"}],"name":"setDefaultReferralDiscount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferrerCommission","type":"uint256"}],"name":"setDefaultReferrerCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_defaultReferrerSnipeFeeCut","type":"uint256"}],"name":"setDefaultReferrerSnipeFeeCut","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referralDiscount","type":"uint256"}],"name":"setReferralDiscount","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referrerCommission","type":"uint256"}],"name":"setReferrerCommission","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_referrerAddress","type":"address"},{"internalType":"uint256","name":"_referrerSnipeFeeCut","type":"uint256"}],"name":"setReferrerSnipeFeeCut","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierType","type":"uint256"},{"internalType":"uint256","name":"_tierPrice","type":"uint256"}],"name":"setTierPrice","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierType","type":"uint256"},{"internalType":"uint256","name":"_tierSnipeFee","type":"uint256"}],"name":"setTierSnipeFee","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_userAddress","type":"address"},{"internalType":"uint256","name":"_tierType","type":"uint256"}],"name":"setUserTier","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"tierPrices","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"tierSnipeFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tierID","type":"uint256"},{"internalType":"address","name":"_referrerAddress","type":"address"}],"name":"upgradeTier","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userReferrer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userTier","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}];
-        const contractAddress = "0x83804A48E21a499AebB4063c07cfAAA5cB37553f";
-        const contract = new web3.eth.Contract(contractABI, web3.utils.toChecksumAddress(contractAddress));
-        let tierSelection = document.getElementById('tierSelection');
+    <div class="container">
+        <h1>Purchasing Tiers for BlockchainTokenSniper V3</h1>
+        <p>Thank you for your interest in BlockchainTokenSniper V3!</p>
+        <p>All tier subscriptions and purchases for V3 are handled directly through our official Telegram bot: <strong><code>@btsv3bot</code></strong>.</p>
+        <p>Please start a chat with the bot, and it will guide you through the available tiers, features, pricing, and the secure purchase process.</p>
+        <a href="https://t.me/btsv3bot" target="_blank" class="telegram-button">Go to @btsv3bot on Telegram</a>
+        <p>If you have already started the bot, you can typically find tier information under the main menu or settings section.</p>
         
-        window.addEventListener('load', async () => {
-            // Request account access
-            if (window.ethereum) {
-                await window.ethereum.enable();
-            }
-
-            var referralDiscount = 1;
-
-             // Check if there's a referrer in the URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const referrer = urlParams.get('r');
-            var referrerAddress = "0x0000000000000000000000000000000000000000";
-
-            if (referrer) {
-                referrerAddress = web3.utils.toChecksumAddress(referrer);
-                var referrerInfo = await contract.methods.referrerInfo(referrerAddress).call();
-                referralDiscount = (10000 - referrerInfo[1]) / 10000;
-            }
-
-            // Get tier prices and populate select options
-            var tierNames = ['', 'Bronze', 'Silver', 'Gold', 'Diamond'];
-            for (let i = 1; i <= 4; i++) {
-                const tierPriceInWei = await contract.methods.tierPrices(i).call();
-                const tierPriceInEther = web3.utils.fromWei(tierPriceInWei, 'ether') * referralDiscount;
-                let option = document.createElement("option");
-                option.text = `${tierNames[i]} Tier (Price: ${tierPriceInEther} BNB)`;
-                option.value = i;
-                tierSelection.add(option);
-            }
-
-            // Setup form submission handling
-            document.getElementById('buyTierForm').addEventListener('submit', async (event) => {
-                event.preventDefault();
-
-                const tierId = tierSelection.value;
-                const senderAddress = web3.utils.toChecksumAddress(ethereum.selectedAddress);
-                const tierPriceInWei = await contract.methods.tierPrices(tierId).call();
-
-                contract.methods.buyTier(tierId, referrerAddress).send({ from: senderAddress, value: tierPriceInWei * referralDiscount })
-                    .then(receipt => {
-                        document.getElementById('transactionHash').textContent = `Thank you for buying a tier! \n\nTX hash: ${receipt.transactionHash}`;
-                        // Show the modal
-                        document.getElementById('myModal').style.display = "block";
-                    })
-                    .catch(err => console.error(err));
-            });
-        });
-
-        // Get the modal
-        var modal = document.getElementById('myModal');
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+        <a href="../index.html" class="home-link">Return to Homepage</a>
+    </div>
 </body>
 </html>
