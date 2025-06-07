@@ -16,8 +16,14 @@
 *   **Recent Website Code Changes**:
     *   **`index.html`**: Multiple updates as listed above.
     *   **`buy/index.html`**: Security notice removed.
-    *   **`docs/migration/index.html`**: Security notice and V1/V2 migration section added.
-    *   **`docs/downloads/index.html`**: Subscription text updated.
+    *   **`docs/migration/index.html`**: Security notice and V1/V2 migration section added. Link to `docs/smart-contracts/` removed (07/06/2025).
+    *   **`docs/downloads/index.html`**: Subscription text updated. Link to `docs/smart-contracts/` removed (07/06/2025).
+    *   **`docs/referral-system/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
+    *   **`docs/supported-blockchains/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
+    *   **`docs/contact/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
+    *   **`docs/user-guide/user-guides/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
+    *   **`docs/user-guide/BlockchainLaunchSniper/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
+    *   **`docs/user-guide/BlockchainMultiSniper/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
     *   **`docs/smart-contracts/`**: Directory and contents removed (07/06/2025).
     *   **`404.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
 *   **Recent Bot Application Code Changes (External Repo - Previous Fixes)**:

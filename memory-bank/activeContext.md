@@ -42,6 +42,15 @@
 *   **Website Structure Update (Completed 07/06/2025)**:
     *   Removed `docs/smart-contracts/` directory and its contents.
     *   Removed link to `docs/smart-contracts/` from `404.html`.
+    *   Removed links to `docs/smart-contracts/` from navigation in the following files:
+        *   `docs/migration/index.html`
+        *   `docs/downloads/index.html`
+        *   `docs/referral-system/index.html`
+        *   `docs/supported-blockchains/index.html`
+        *   `docs/contact/index.html`
+        *   `docs/user-guide/user-guides/index.html`
+        *   `docs/user-guide/BlockchainLaunchSniper/index.html`
+        *   `docs/user-guide/BlockchainMultiSniper/index.html`
 *   (Other previous changes as documented in `progress.md`, contextualized)
 
 
