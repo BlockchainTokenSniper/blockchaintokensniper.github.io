@@ -39,6 +39,9 @@
     *   `docs/migration/index.html`: Security notice added, V1/V2 migration info added.
     *   `docs/downloads/index.html`: Subscription text updated, terminology changed.
 *   **Bot Application Fix (External Repo) (Completed)**: Corrected argument passing in `deductFees` (`modules_main/process_fees.js`).
+*   **Website Structure Update (Completed 07/06/2025)**:
+    *   Removed `docs/smart-contracts/` directory and its contents.
+    *   Removed link to `docs/smart-contracts/` from `404.html`.
 *   (Other previous changes as documented in `progress.md`, contextualized)
 
 
