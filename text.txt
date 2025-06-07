@@ -1,0 +1,11 @@
+BlockchainTokenSniper started as a very basic script I (@BytePhoenix) uploaded to GitHub around 4 years ago, never expecting anything.
+
+To my surprise, it gained a fair bit of interest at which point I started to make a Telegram group for users and develop it further.
+
+I then created BlockchainLaunchSniper and BlockchainMultiSniper originally for the BSC chain then modified it to support other EVM chains.
+
+These two bots surged in popularity, reaching over 2.5k members in the Telegram group.
+
+Unfortunately the hype died, and I later made V2 (an improved version) with little success, and then V3 when I noticed that most other bots
+were Telegram-based and that was much easier to use than having to manually install the bot on a desktop. V3 started out as only the Launch sniper 
+bot but now it has been re-developed from the ground up and now includes both bots and many more advanced features.
