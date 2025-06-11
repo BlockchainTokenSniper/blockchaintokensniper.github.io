@@ -1,67 +1,48 @@
-# Active Context: BlockchainTokenSniper (BTS) V3
-
 # Active Context: BlockchainTokenSniper (BTS) V3 Website
 
-**Note:** This repository and context primarily concern the **BTS V3 Website**. Information regarding the BTS V3 bot application's internal workings, development, or specific bug fixes (e.g., `UnableToPopulateNonceError`, `process_fees.js`) refers to activities in separate, private repositories unless explicitly stated as a website change.
+**Note:** This repository and context primarily concern the **BTS V3 Website**. Information regarding the BTS V3 bot application's internal workings, development, or specific bug fixes refers to activities in separate, private repositories unless explicitly stated as a website change.
 
 ## Current Focus
 
-*   **Finalize Website Updates Based on User Feedback**:
-    *   **Goal**: Implement all requested changes across `index.html`, `buy/index.html`, `docs/migration/index.html`, and `docs/downloads/index.html`.
-    *   **Status**:
-        *   **Implemented (06/06/2025, ~7:39pm)**:
-            *   **`index.html`**:
-                *   Security notice removed (moved to `docs/migration/index.html`).
-                *   Changed "sniping modules" & "Module" to "sniping bots" & "Bot" in relevant text and headings.
-                *   Removed "PRO_VOUCHER" from Pro Tier description.
-                *   Removed "Smart contracts" link from the main navigation menu.
-            *   **`buy/index.html`**:
-                *   Security notice removed (moved to `docs/migration/index.html`).
-            *   **`docs/migration/index.html`**:
-                *   Added the "Important Security Notice" section.
-                *   Added a new section: "Migrating from BTS V1/V2 to V3?", including details on contacting support and potential complimentary Pro access for previous users.
-            *   **`docs/downloads/index.html`**:
-                *   Updated the list item about tiers to: "Exploring tier options: A Free Tier is available, and subscribing to a Pro Tier unlocks the full range of advanced features."
-                *   Changed "module" to "bot" in list items for consistency.
-*   **Previous Focus (Bot Application - External Repo)**:
-    *   Fix `UnableToPopulateNonceError` - `modules_main/process_fees.js` (Implemented 06/06/2025, ~7:16pm): Corrected argument passing in `deductFees`. This was a bot application fix, not a website change.
-*   (Other previous focuses as documented before, contextualized as website or external bot changes)
-    *   **Next Step**:
-        1.  **User Review of All Website Changes**: User to review all modified website pages (`index.html`, `buy/index.html`, `docs/migration/index.html`, `docs/downloads/index.html`) for accuracy, clarity, and completeness.
-        2.  **User Testing of Fee System (Bot Application - External Repo)**: (Ongoing from previous step) User to test fee deduction in the bot application.
-        3.  (Other general testing steps as previously listed in `progress.md`, contextualized)
+*   **Ensure Consistent References to BlockchainSolanaSniper**:
+    *   **Goal**: Review all pages and update them to include references to the `BlockchainSolanaSniper` where appropriate, ensuring consistency across the site.
+    *   **Status**: **Completed (06/11/2025)**.
+        *   Updated navigation menus in all relevant files to include a link to the `BlockchainSolanaSniper` user guide.
+        *   Updated content in `docs/downloads/index.html` to include the `BlockchainSolanaSniper` in the list of bots.
+    *   **Next Step**: User review of the updated pages.
 
 ## Recent Changes
 
-*   **Website Content Update (Multiple Files) (Completed)**:
+*   **Website Consistency Update (BlockchainSolanaSniper) (Completed 06/11/2025)**:
+    *   **`docs/downloads/index.html`**: Added `BlockchainSolanaSniper` to the list of bots and updated the navigation menu.
+    *   **`docs/contact/index.html`**: Updated the navigation menu.
+    *   **`docs/migration/index.html`**: Updated the navigation menu.
+    *   **`docs/referral-system/index.html`**: Updated the navigation menu.
+    *   **`docs/user-guide/BlockchainLaunchSniper/index.html`**: Updated the navigation menu.
+    *   **`docs/user-guide/BlockchainMultiSniper/index.html`**: Updated the navigation menu.
+
+*   **Website Content Update (BlockchainSolanaSniper) (Completed 06/11/2025)**:
+    *   **`docs/user-guide/SolanaMultiSniper/index.html`**: New file created with comprehensive details on the Solana bot.
+    *   **`docs/user-guide/user-guides/index.html`**: Added link to the new Solana user guide in the main list and side navigation.
+    *   **`index.html`**: Added BlockchainSolanaSniper to the list of bots and included a new section summarizing its features.
+    *   **`docs/supported-blockchains/index.html`**: Added a new section for Solana, mentioning Jupiter API integration.
+
+*   **Website Content Update (Multiple Files) (Completed 06/06/2025)**:
     *   `index.html`: Security notice removed, terminology changed (modules to bots), PRO_VOUCHER removed, nav link removed.
     *   `buy/index.html`: Security notice removed.
     *   `docs/migration/index.html`: Security notice added, V1/V2 migration info added.
     *   `docs/downloads/index.html`: Subscription text updated, terminology changed.
-*   **Bot Application Fix (External Repo) (Completed)**: Corrected argument passing in `deductFees` (`modules_main/process_fees.js`).
-*   **Website Structure Update (Completed 07/06/2025)**:
-    *   Removed `docs/smart-contracts/` directory and its contents.
-    *   Removed link to `docs/smart-contracts/` from `404.html`.
-    *   Removed links to `docs/smart-contracts/` from navigation in the following files:
-        *   `docs/migration/index.html`
-        *   `docs/downloads/index.html`
-        *   `docs/referral-system/index.html`
-        *   `docs/supported-blockchains/index.html`
-        *   `docs/contact/index.html`
-        *   `docs/user-guide/user-guides/index.html`
-        *   `docs/user-guide/BlockchainLaunchSniper/index.html`
-        *   `docs/user-guide/BlockchainMultiSniper/index.html`
-*   (Other previous changes as documented in `progress.md`, contextualized)
 
+*   **Website Structure Update (Completed 07/06/2025)**:
+    *   Removed `docs/smart-contracts/` directory and its contents and all links pointing to it.
 
 ## Active Decisions & Considerations
 
 *   **Iterative Website Updates**: Applying website changes in batches per file, or even per section, can be more manageable and less error-prone with current tooling than large, multi-file diffs.
-*   (Other previous decisions retained)
+*   **Templating Consistency**: New pages should be created based on the structure of existing pages to maintain a consistent look and feel.
 
 ## Learnings & Project Insights
 
 *   **Tool Limitations with Multiple Changes**: `replace_in_file` can struggle with multiple SEARCH/REPLACE blocks if earlier changes affect the line numbers or exact content expected by later blocks. Sequential, confirmed changes or `write_to_file` are alternatives.
-*   (Other previous learnings retained)
 
 *(This file will be updated frequently as analysis progresses and tasks are undertaken.)*

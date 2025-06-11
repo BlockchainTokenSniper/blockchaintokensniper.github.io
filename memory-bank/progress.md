@@ -1,74 +1,42 @@
 # Project Progress: BlockchainTokenSniper (BTS) V3 Website
 
-**Note:** This repository and progress report primarily concern the **BTS V3 Website**. Information regarding the BTS V3 bot application's internal workings, development, or specific bug fixes (e.g., `UnableToPopulateNonceError`, `process_fees.js`, test suites) refers to activities in separate, private repositories unless explicitly stated as a website change.
+**Note:** This repository and progress report primarily concern the **BTS V3 Website**. Information regarding the BTS V3 bot application's internal workings is handled in separate repositories.
 
-## Current Status (Post All Requested Website Updates 06/06/2025, ~7:39pm)
+## Current Status (Post Solana Consistency Update 06/11/2025)
 
-*   **Overall:** The BTS V3 Website is under active development and refinement.
-    *   **Website Content Updates (Comprehensive)**:
-        *   **`index.html`**: Security notice removed (moved), "modules" changed to "bots", "PRO_VOUCHER" removed from tier info, "Smart contracts" link removed from navigation.
-        *   **`buy/index.html`**: Security notice removed (moved).
-        *   **`docs/migration/index.html`**: Security notice added here, new section "Migrating from BTS V1/V2 to V3?" added with tier migration offer.
-        *   **`docs/downloads/index.html`**: Text regarding tier subscriptions clarified to indicate Pro Tier is optional for advanced features; "module" changed to "bot" for consistency.
-    *   **Bot Application Fixes (External Repo - Previous Fixes)**:
-        *   `UnableToPopulateNonceError` Fix (`modules_main/process_fees.js`).
-        *   Full Rewrite of `modules_main/process_fees.js`.
-*   **Recent Website Code Changes**:
-    *   **`index.html`**: Multiple updates as listed above.
-    *   **`buy/index.html`**: Security notice removed.
-    *   **`docs/migration/index.html`**: Security notice and V1/V2 migration section added. Link to `docs/smart-contracts/` removed (07/06/2025).
-    *   **`docs/downloads/index.html`**: Subscription text updated. Link to `docs/smart-contracts/` removed (07/06/2025).
-    *   **`docs/referral-system/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
-    *   **`docs/supported-blockchains/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
-    *   **`docs/contact/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
-    *   **`docs/user-guide/user-guides/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
-    *   **`docs/user-guide/BlockchainLaunchSniper/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
-    *   **`docs/user-guide/BlockchainMultiSniper/index.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
-    *   **`docs/smart-contracts/`**: Directory and contents removed (07/06/2025).
-    *   **`404.html`**: Link to `docs/smart-contracts/` removed (07/06/2025).
-*   **Recent Bot Application Code Changes (External Repo - Previous Fixes)**:
-    *   `modules_main/process_fees.js`.
+*   **Overall:** The BTS V3 Website is under active development. The latest major update was a consistency pass to ensure the new `BlockchainSolanaSniper` is referenced correctly across all relevant pages.
+*   **Recent Website Code Changes (Solana Consistency)**:
+    *   Updated navigation menus on all pages to include the `BlockchainSolanaSniper` user guide.
+    *   Updated `docs/downloads/index.html` to include `BlockchainSolanaSniper` in the list of available bots.
+*   **Previous Website Code Changes (Solana Documentation)**:
+    *   **`docs/user-guide/SolanaMultiSniper/index.html`**: Created a new, detailed user guide for the Solana bot.
+    *   **`index.html`**: Updated to feature the BlockchainSolanaSniper, including adding it to the main list of bots and creating a new descriptive section with a link to the guide.
+    *   **`docs/user-guide/user-guides/index.html`**: Updated the table of contents and side navigation to include the new Solana guide.
+    *   **`docs/supported-blockchains/index.html`**: Updated to include Solana as a supported network, with details on its integration via the Jupiter API.
 *   **Memory Bank Updates (Ongoing)**:
-    *   `activeContext.md`, `projectbrief.md`, and `progress.md` (this file) updated to reflect website-only scope of this repository.
+    *   `activeContext.md` and `progress.md` (this file) updated to reflect the consistency changes.
 
 ## What Works (Website)
 
-*   All recent website content changes have been implemented as requested.
-*   Navigation links and site structure are functional.
+*   All pages now consistently reference the `BlockchainSolanaSniper` bot and its documentation.
+*   Navigation links are consistent across the entire website.
+*   The homepage correctly introduces all three bot variants.
 *   Static assets (CSS, JS for website) are loading correctly.
-
-## What Works (Bot Application - External Repo, based on previous info)
-
-*   Fee processing system in `modules_main/process_fees.js` is believed to be stable (pending final user confirmation).
-*   **Test Cases 1-8 (`tests/test_suite_v3.js`)**: All Launch Sniper tests were reported as passing.
 
 ## What's Left to Build / Refine (High-Level - Website)
 
 **Current Tasks & Next Steps (Website):**
-1.  **Add "Project History" Section Template to `index.html`**: Per user request.
-2.  **User Review of All Website Changes**: User to review all modified website pages (`index.html`, `buy/index.html`, `docs/migration/index.html`, `docs/downloads/index.html`) for accuracy, clarity, and completeness.
-3.  If website changes are approved, await further instructions for website development.
+1.  **User Review of Website Consistency**: User to review the website to ensure all references to `BlockchainSolanaSniper` are correct and consistent.
+2.  **Add "Project History" Section Template to `index.html`**: This was a pending task from before the Solana update.
+3.  If all website changes are approved, await further instructions for website development.
 
 **Next Steps (Bot Application - External Repo, based on previous info):**
-1.  **User Testing of Fee System (Comprehensive)**: (Ongoing) User to restart the bot and thoroughly test all aspects of fee deduction.
-2.  If fee system is confirmed stable, move to next major steps for bot development (e.g., `checkUntilTradable` functionality).
-3.  (Other general bot testing steps as previously listed).
-
----
-**Next Major Step (Bot Application - External Repo, After current testing round): Address `checkUntilTradable` Functionality**
-*   (As previously documented for the bot application)
----
-*Carry-over tasks from previous focus (Bot Application - External Repo, will need re-testing):*
-*   (As previously documented for the bot application).
-
-## Known Issues (Bot Application - External Repo, based on previous info)
-
-*   **Fee System (Overall Functionality)**: Multiple fixes and a rewrite have been applied. Awaiting final comprehensive user re-test to confirm stability and correctness of all fee-related operations in the bot application.
-*   (Other previous "FIX ATTEMPTED" issues are now part of the overall fee system re-test for the bot application).
+*   Continue with comprehensive user testing of the bot's fee system and other core functionalities as previously planned.
 
 ## Evolution of Project Decisions (Website)
 
+*   **Product Line Expansion**: The website has been updated to reflect the expansion of the BTS product line to include a non-EVM chain (Solana), requiring new documentation and adjustments to the site's information architecture.
 *   **Website Content Strategy**: Iteratively refined website content based on specific user feedback to ensure clarity, accuracy, and inclusion of important information like security advice and migration paths for users of previous versions.
 *   **Repository Scope Clarification**: Memory bank and project documentation updated to clearly define this repository as containing only the website code.
 
-*(This document reflects the state after the ~7:39pm completion of all requested website updates and the clarification of this repository's scope.)*
+*(This document reflects the state after the completion of the BlockchainSolanaSniper documentation integration.)*
