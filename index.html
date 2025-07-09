@@ -113,20 +113,7 @@
           <li class="nav-list-item">
             <a href="docs/supported-blockchains/index.html" class="nav-list-link">Supported blockchains / DEXs</a>
           <li class="nav-list-item">
-            <button class="nav-list-expander btn-reset" aria-label="toggle items in User Guides category" aria-pressed="false">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <use xlink:href="#svg-arrow-right"></use>
-              </svg>
-            </button>
-            <a href="docs/user-guide/user-guides/index.html" class="nav-list-link">User Guides</a>
-            <ul class="nav-list">
-              <li class="nav-list-item ">
-                <a href="docs/user-guide/BlockchainLaunchSniper/index.html" class="nav-list-link">BlockchainLaunchSniper Bot (V3)</a>
-              <li class="nav-list-item ">
-                <a href="docs/user-guide/BlockchainMultiSniper/index.html" class="nav-list-link">BlockchainMultiSniper Bot (V3)</a>
-              <li class="nav-list-item ">
-                <a href="docs/user-guide/SolanaMultiSniper/index.html" class="nav-list-link">BlockchainSolanaSniper</a>
-            </ul>
+            <a href="docs/user-guide/index.html" class="nav-list-link">User Guide</a>
         </ul>
       </nav>
       <footer class="site-footer"></footer>
@@ -182,7 +169,7 @@
               </a> BlockchainLaunchSniper Bot
             </h3>
             <p>The BlockchainLaunchSniper bot, managed via the <code>@btsv3bot</code> Telegram interface, allows you to precisely snipe newly launched tokens. Configure your buy parameters, and let the bot execute the trade automatically on your chosen EVM-compatible blockchain and exchange.</p>
-            <p>Snipe tokens paired with various assets (e.g., BNB, BUSD, ETH). Leverage mempool sniping to buy in the same block as liquidity addition. Monitor real-time price updates and profit/loss, and utilize flexible sell strategies, all configured through Telegram.</p>
+            <p>Snipe tokens paired with various assets (e.g., BNB, BUSD, ETH) on multiple EVM chains. Leverage mempool sniping to buy in the same block as liquidity addition. Monitor real-time price updates and profit/loss, and utilize flexible sell strategies, all configured through Telegram.</p>
             <h4 id="v3-features">
               <a href="#v3-features" class="anchor-heading" aria-labelledby="v3-features">
                 <svg viewBox="0 0 16 16" aria-hidden="true">
@@ -255,7 +242,7 @@
               </a> BlockchainSolanaSniper Bot
             </h3>
             <p>Expanding beyond EVM, BTS V3 now offers a dedicated sniper for the Solana network. The BlockchainSolanaSniper leverages the high-speed capabilities of the Solana blockchain and the deep liquidity of the Jupiter (Jup.ag) exchange aggregator to provide best-in-class sniping performance.</p>
-            <p>Monitor Telegram channels for Solana token calls and let the bot automatically handle the buying and selling process based on your custom strategies. For a deep dive into its features, configuration, and trading modes, check out the <a href="docs/user-guide/SolanaMultiSniper/index.html">BlockchainSolanaSniper User Guide</a>.</p>
+            <p>Monitor Telegram channels for Solana token calls and let the bot automatically handle the buying and selling process based on your custom strategies. For a deep dive into its features, configuration, and trading modes, check out the <a href="docs/user-guide/index.html#solanasniper-solana">BlockchainSolanaSniper User Guide</a>.</p>
             <h4 id="v3-solana-features">
               <a href="#v3-solana-features" class="anchor-heading" aria-labelledby="v3-solana-features">
                 <svg viewBox="0 0 16 16" aria-hidden="true">
@@ -289,9 +276,9 @@
             <ol>
               <li>Open Telegram and search for the official bot: <a href="https://t.me/btsv3bot"><strong><code>@btsv3bot</code></strong>.</a></li>
               <li>Start a chat with the bot and follow the on-screen instructions for initial setup, including wallet configuration.</li>
-              <li>To unlock the full power of BTS V3, you'll need to subscribe to a tier. The bot will guide you through the available tiers and the purchase process.</li>
+              <li>To unlock the full power of BTS V3, you can upgrade to the Pro tier. The bot will guide you through the purchase process.</li>
             </ol>
-            <p>Once subscribed, you'll gain access to both the BlockchainLaunchSniper and BlockchainMultiSniper bots, along with all their features, managed conveniently through the Telegram interface.</p>
+            <p>Once upgraded, you'll gain full unrestricted access to all bots, managed conveniently through the Telegram interface.</p>
             <h3 id="bts-v3-tiers-and-fees">
               <a href="#bts-v3-tiers-and-fees" class="anchor-heading" aria-labelledby="bts-v3-tiers-and-fees">
                 <svg viewBox="0 0 16 16" aria-hidden="true">
@@ -305,16 +292,16 @@
                 <a href="#free-tier" class="anchor-heading" aria-labelledby="free-tier"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a>Free Tier
             </h4>
             <ul>
-                <li>Access to essential features of the BlockchainLaunchSniper and BlockchainMultiSniper bots.</li>
+                <li>Access to essential features of all bots.</li>
                 <li>Ideal for users looking to try out the bot or for occasional sniping.</li>
-                <li>A standard commission fee is applied to profitable trades. The current percentage can be found within the bot.</li>
+                <li>A fee of 1% of trading volume is applied to all trades.</li>
             </ul>
 
             <h4 id="pro-tier" class="fs-4">
                 <a href="#pro-tier" class="anchor-heading" aria-labelledby="pro-tier"><svg viewBox="0 0 16 16" aria-hidden="true"><use xlink:href="#svg-link"></use></svg></a>Pro Tier
             </h4>
             <ul>
-                <li>Unlocks the <strong>full suite of advanced features</strong> for both sniping bots, including priority access to new updates and capabilities.</li>
+                <li>Unlocks the <strong>full suite of advanced features</strong> for all sniping bots, including priority access to new updates and capabilities.</li>
                 <li><strong>0% commission</strong> on all profitable trades. Maximize your gains!</li>
                 <li>Pro Tier access can be obtained via:
                     <ul>
@@ -336,9 +323,9 @@
                 </svg>
               </a> Our Story: The Evolution of BlockchainTokenSniper
             </h2>
-            <p>BlockchainTokenSniper began as a simple script I (<a href="https://t.me/BytePhoenix" target="_blank">@BytePhoenix</a>) uploaded to GitHub over four years ago, with no real expectations. To my surprise, it quickly attracted attention, which led me to create a Telegram group to support early users and begin further development.</p>
-            <p>As the community grew, I expanded the project into two specialised tools: BlockchainLaunchSniper and BlockchainMultiSniper, initially designed for the Binance Smart Chain. These tools were later adapted to support a range of EVM-compatible networks. The bots gained significant traction, and the Telegram group grew to over 2,500 members.</p>
-            <p>While initial hype eventually cooled, I continued refining the project. I released V2—a more stable and feature-rich version—which didn’t gain much traction. However, after noticing the growing popularity of Telegram-based solutions, I completely reimagined the tool as V3. This version was built from the ground up to run entirely through Telegram, offering a more user-friendly and accessible experience. What started as just the Launch Sniper has since evolved into a comprehensive suite that now includes both sniping tools and a host of advanced features.</p>
+            <p>BlockchainTokenSniper began as a simple script we uploaded to GitHub over four years ago, with no real expectations. To our surprise, it quickly attracted attention, which led us to create a Telegram group to support early users and begin further development.</p>
+            <p>As the community grew, we expanded the project into two specialised tools: BlockchainLaunchSniper and BlockchainMultiSniper, initially designed for the Binance Smart Chain. These tools were later adapted to support a range of EVM-compatible networks. The bots gained significant traction, and the Telegram group grew to over 2,500 members.</p>
+            <p>While initial hype eventually cooled, we continued refining the project. We released V2, a more stable and feature-rich version—which didn’t gain much traction. However, after noticing the growing popularity of Telegram-based solutions, we completely reimagined the tool as V3. This version was built from the ground up to run entirely through Telegram, offering a more user-friendly and accessible experience. What started as just the LaunchSniper bot has since evolved into a comprehensive suite that now includes multiple sniping tools and a host of advanced features.</p>
             <hr />
           </main>
           <hr>

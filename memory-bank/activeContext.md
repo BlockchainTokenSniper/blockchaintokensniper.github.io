@@ -4,14 +4,17 @@
 
 ## Current Focus
 
-*   **Ensure Consistent References to BlockchainSolanaSniper**:
-    *   **Goal**: Review all pages and update them to include references to the `BlockchainSolanaSniper` where appropriate, ensuring consistency across the site.
-    *   **Status**: **Completed (06/11/2025)**.
-        *   Updated navigation menus in all relevant files to include a link to the `BlockchainSolanaSniper` user guide.
-        *   Updated content in `docs/downloads/index.html` to include the `BlockchainSolanaSniper` in the list of bots.
-    *   **Next Step**: User review of the updated pages.
+*   **Comprehensive User Guide Update**:
+    *   **Goal**: Overhaul the user guide to be a single, comprehensive document covering all features of the BTS V3 bot.
+    *   **Status**: **Completed (07/09/2025)**.
+        *   Replaced the content of `docs/user-guide/index.html` with a new, detailed guide provided by the user.
+        *   The new guide consolidates information for all snipers (LaunchSniper, MultiSniper, SolanaSniper) and includes detailed sections on commands, settings, and trading modes.
+    *   **Next Step**: Review if the old, separate user guide files (`BlockchainLaunchSniper/index.html`, etc.) should be removed or redirected.
 
 ## Recent Changes
+
+*   **Comprehensive User Guide Overhaul (Completed 07/09/2025)**:
+    *   **`docs/user-guide/index.html`**: Replaced the entire content of the main user guide page with a new, comprehensive guide. This consolidates all previous user guide information into a single, authoritative source.
 
 *   **Website Consistency Update (BlockchainSolanaSniper) (Completed 06/11/2025)**:
     *   **`docs/downloads/index.html`**: Added `BlockchainSolanaSniper` to the list of bots and updated the navigation menu.
@@ -40,9 +43,11 @@
 
 *   **Iterative Website Updates**: Applying website changes in batches per file, or even per section, can be more manageable and less error-prone with current tooling than large, multi-file diffs.
 *   **Templating Consistency**: New pages should be created based on the structure of existing pages to maintain a consistent look and feel.
+*   **Consolidating Content**: For documentation like user guides, a single, comprehensive page can be more user-friendly and easier to maintain than multiple, fragmented pages.
 
 ## Learnings & Project Insights
 
 *   **Tool Limitations with Multiple Changes**: `replace_in_file` can struggle with multiple SEARCH/REPLACE blocks if earlier changes affect the line numbers or exact content expected by later blocks. Sequential, confirmed changes or `write_to_file` are alternatives.
+*   **Large-Scale Content Replacement**: For overhauling an entire page's content, `replace_in_file` targeting the `<main>` HTML element is an effective strategy, preserving the site's template structure.
 
 *(This file will be updated frequently as analysis progresses and tasks are undertaken.)*
