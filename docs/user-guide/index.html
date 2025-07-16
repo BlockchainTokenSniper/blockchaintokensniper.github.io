@@ -49,7 +49,14 @@
             <li class="nav-list-item"><a href="../migration/index.html" class="nav-list-link">Information on V3</a></li>
             <li class="nav-list-item"><a href="../referral-system/index.html" class="nav-list-link">Referral system</a></li>
             <li class="nav-list-item"><a href="../supported-blockchains/index.html" class="nav-list-link">Supported blockchains / DEXs</a></li>
-            <li class="nav-list-item active"><a href="./index.html" class="nav-list-link active">User Guide</a></li>
+            <li class="nav-list-item active">
+               <a href="./index.html" class="nav-list-link active">User Guide</a>
+               <ul class="nav-list">
+                  <li class="nav-list-item"><a href="BlockchainLaunchSniper/index.html" class="nav-list-link">BlockchainLaunchSniper</a></li>
+                  <li class="nav-list-item"><a href="BlockchainMultiSniper/index.html" class="nav-list-link">BlockchainMultiSniper</a></li>
+                  <li class="nav-list-item"><a href="SolanaMultiSniper/index.html" class="nav-list-link">BlockchainSolanaSniper</a></li>
+               </ul>
+            </li>
          </ul>
       </nav>
          <footer class="site-footer"></footer>
@@ -71,275 +78,37 @@
          <div id="main-content-wrap" class="main-content-wrap">
             <div id="main-content" class="main-content">
                <main>
-                  <h1 class="no_toc" id="user-guide-v3">
-                     <a href="#user-guide-v3" class="anchor-heading" aria-labelledby="user-guide-v3">
-                        <svg viewBox="0 0 16 16" aria-hidden="true">
-                           <use xlink:href="#svg-link"></use>
-                        </svg>
-                     </a>
-                     BlockchainTokenSniper (BTS) V3 - User Guide
+                  <h1 class="no_toc" id="user-guides">
+                     User Guides
                   </h1>
+                  <p>Welcome to the user guide for BlockchainTokenSniper (BTS) V3. Please select a guide below to learn more about a specific sniper bot.</p>
                   
-                  <h2 id="welcome">1. Welcome to BTS V3!</h2>
-                  <p><strong>🎉 Welcome to BTS V3! 🎉</strong></p>
-                  <p>Here are a few key things to know before you get started:</p>
+                  <ul>
+                    <li>
+                        <a href="BlockchainLaunchSniper/index.html">BlockchainLaunchSniper Guide</a>
+                        <p>Learn how to snipe specific token launches on EVM chains.</p>
+                    </li>
+                    <li>
+                        <a href="BlockchainMultiSniper/index.html">BlockchainMultiSniper Guide</a>
+                        <p>Learn how to automatically trade tokens from Telegram channels on EVM chains.</p>
+                    </li>
+                    <li>
+                        <a href="SolanaMultiSniper/index.html">SolanaSniper Guide</a>
+                        <p>Learn how to automatically trade tokens from Telegram channels on the Solana network.</p>
+                    </li>
+                  </ul>
+
+                  <hr>
+                  
+                  <h2 id="general-information">General Information</h2>
+                   <p>Here are a few key things to know that apply to all bots:</p>
                   <ul>
                      <li><strong>Tiers</strong>: Every user is assigned the free tier by default which has certain restrictions unlike the Pro tier. You can view Pro tier benefits and upgrade your tier at any time from the main menu.</li>
                      <li><strong>Fees</strong>: This bot applies a 1% fee on all trades for free tier users. Fees are collected automatically from your wallet when the balance owed exceeds a certain threshold. Pro tier users have no fees.</li>
                      <li><strong>Security</strong>: Your private keys are stored securely on your local machine. However, for maximum security it's recommended to use a dedicated 'burner' wallet with the bot, and transfer any large amounts to an external wallet or exchange.</li>
-                     <li><strong>Settings</strong>: Use the <code>/settings</code> command to configure gas fees, slippage, auto-sell rules, and more.</li>
                      <li><strong>Help</strong>: If you need assistance, access the help menu from the main menu or use the <code>/help</code> command at any time.</li>
-                     <li><strong>Website</strong>: For more information, visit our website at <a href="https://blockchaintokensniper.github.io">blockchaintokensniper.github.io</a>.</li>
                   </ul>
-                  
-                  <hr>
-                  
-                  <h2 id="getting-started">2. Getting Started</h2>
-                  <h3 id="first-time-setup">2.1. First-Time Setup</h3>
-                  <p>When you first <code>/start</code> the bot, it will guide you through a setup process:</p>
-                  <ol>
-                     <li><strong>Language Selection</strong>: Choose your preferred language.</li>
-                     <li><strong>Wallet Setup</strong>: The bot will help you set up both an EVM (Ethereum, BSC, etc.) and a Solana wallet. For each, you can:
-                        <ul>
-                           <li><strong>Import Wallet from Private Key</strong>: Use an existing wallet.</li>
-                           <li><strong>Import Wallet from Seed Phrase</strong>: Import from a 12 or 24-word seed phrase.</li>
-                           <li><strong>Generate New Wallet</strong>: Create a fresh, empty wallet.</li>
-                        </ul>
-                     </li>
-                     <li><strong>Telegram API Setup</strong>: To use the automated snipers (MultiSniper and SolanaSniper), you must add your Telegram API credentials via the settings menu. This allows the bot to read messages from channels you specify. Go to <code>Settings</code> -> <code>MultiSniper Settings</code> (or <code>SolanaSniper Settings</code>) -> <code>Manage Telegram Settings</code>.</li>
-                  </ol>
-                  
-                  <h3 id="how-to-start-sniping">2.2. How to Start Sniping</h3>
-                  <p><strong>EVM (Ethereum, BSC, Base etc.)</strong>: 
-                  There are two bots available:
-                  <ul>
-                     <li><strong>LaunchSniper</strong>: Use this bot to snipe a specific token as soon as it launches or gains liquidity.</li>
-                     <li><strong>MultiSniper</strong>: Automatically buy and sell tokens from configured Telegram channels.</li>
-                  </ul>
-                  To start sniping on any EVM chain, follow these 5 simple steps:
-                  <ol>
-                     <li>Use <code>/start</code> to go to the main menu.</li>
-                     <li>Click on 'Change Chain / DEX', and switch to your desired EVM chain.</li>
-                     <li>Fund your wallet with the native currency (e.g. ETH, BNB). You can view your wallet address via 'Wallet Info' in the main menu.</li>
-                     <li>Go into the settings menu (<code>/settings</code>) to configure the LaunchSniper or MultiSniper.</li>
-                     <li>Start the bot from the main menu or using the <code>/launch</code> or <code>/multi</code> commands.</li>
-                  </ol>
-                  </p>
-                  <p><strong>Solana</strong>:
-                  You can use the SolanaSniper bot to automatically find and trade tokens from Telegram channels.
-                  <br>
-                  To start sniping on Solana, follow these 5 simple steps:
-                  <ol>
-                     <li>Use <code>/start</code> to go to the main menu.</li>
-                     <li>Click on 'Change Chain / DEX', and switch to Solana.</li>
-                     <li>Fund your wallet with SOL. You can view your wallet address via 'Wallet Info' in the main menu.</li>
-                     <li>Go into the settings menu (<code>/settings</code>) to configure the SolanaSniper.</li>
-                     <li>Start the bot from the main menu or using the <code>/solana</code> command.</li>
-                  </ol>
-                  </p>
-                  
-                  <hr>
-                  
-                  <h2 id="main-menu">3. Main Menu Explained</h2>
-                  <p>The main menu is your central hub for controlling the bot.</p>
-                  <ul>
-                     <li><strong>Snipe token (LaunchSniper) (EVM)</strong>: Starts the LaunchSniper bot to buy a specific token on an EVM chain. You will be prompted to enter the token's contract address.</li>
-                     <li><strong>Auto buy / sell (MultiSniper) (EVM)</strong>: Starts the MultiSniper bot for EVM chains, which automatically finds and trades tokens from your configured Telegram channels.</li>
-                     <li><strong>Auto buy / sell (MultiSniper) (Solana)</strong>: Starts the SolanaSniper bot, which automatically finds and trades tokens from your configured Telegram channels on the Solana network.</li>
-                     <li><strong>SOL Reclaimer</strong>: A utility to recover SOL from empty token accounts in your Solana wallet, helping you clean up dust and reclaim locked SOL.</li>
-                     <li><strong>Snipe List</strong>: Shows a history of your past snipes and trades.</li>
-                     <li><strong>Wallet Info</strong>: Displays your currently active wallet address (both EVM and Solana) as a QR code and text, along with your native token balance (e.g., ETH, BNB, SOL). You can also reveal your private key from this menu.</li>
-                     <li><strong>Change Chain / DEX</strong>: Allows you to switch between different blockchains (e.g., Ethereum, BSC, Solana) and the decentralized exchanges (DEXs) on them.</li>
-                     <li><strong>Settings</strong>: Opens the detailed configuration menu, covered in section 5.</li>
-                     <li><strong>Help</strong>: Displays the help message.</li>
-                     <li><strong>Referral Scheme</strong>: Opens the menu to view your referral statistics and get your unique referral link.</li>
-                     <li><strong>Pro Tier</strong>: Shows the benefits of the Pro Tier and allows you to upgrade your subscription.</li>
-                  </ul>
-                  
-                  <hr>
-                  
-                  <h2 id="commands">4. Commands</h2>
-                  <ul>
-                     <li><code>/start</code>: Initializes the bot and displays the main menu.</li>
-                     <li><code>/settings</code>: Opens the main settings menu.</li>
-                     <li><code>/help</code>: Displays the help message.</li>
-                     <li><code>/commands</code>: Shows a list of available commands.</li>
-                     <li><code>/launch</code>: Starts the LaunchSniper for EVM chains.</li>
-                     <li><code>/multi [y]</code>: Starts the MultiSniper for EVM chains. Add <code>y</code> to auto-start.</li>
-                     <li><code>/solana [y]</code>: Starts the SolanaSniper. Add <code>y</code> to auto-start.</li>
-                     <li><code>/reclaim</code>: Starts the SOL token reclaimer utility.</li>
-                     <li><code>/sell</code>: Lists currently held tokens to sell them manually.</li>
-                     <li><code>/sell <ID> [percentage]</code>: Sells a specific token from the list by its ID.</li>
-                     <li><code>/sell all [percentage]</code>: Sells all tokens currently held.</li>
-                     <li><code>/sell <ID1>,<ID2> [percentage]</code>: Sells multiple specific tokens.</li>
-                     <li><code>/sell <token_address> [percentage]</code>: (Solana Only) Sells a token by its contract address.</li>
-                     <li><code>/list</code>: Shows your snipe history.</li>
-                     <li><code>/feesummary</code>: Displays your trading fee summary.</li>
-                     <li><code>/profits</code>: Shows your profit/loss summary.</li>
-                     <li><code>/refer</code>: Opens the referral menu.</li>
-                     <li><code>/stats</code>: Shows public statistics for the bot.</li>
-                     <li><code>/clearcache</code>: Deletes the token cache file for your active sniper.</li>
-                     <li><code>/clear</code>: Clears the message history.</li>
-                  </ul>
-                  
-                  <hr>
-                  
-                  <h2 id="configuration-settings">5. Configuration Settings</h2>
-                  <p>This section details all settings available in the <code>/settings</code> menu.</p>
-                  
-                  <h3 id="evm-settings">5.1. EVM Settings</h3>
-                  <h4>Wallet Settings (EVM)</h4>
-                  <ul>
-                     <li><strong>Show Private Key</strong>: Displays your current EVM wallet's private key.</li>
-                     <li><strong>Generate New Wallet</strong>: Creates a new EVM wallet, overwriting the old one.</li>
-                     <li><strong>Import Existing Wallet</strong>: Overwrites your current wallet by importing a new one via private key.</li>
-                  </ul>
-                  <h4>Gas Settings (EVM)</h4>
-                  <ul>
-                     <li><strong>Set Transaction Type</strong>: Choose between <code>Legacy</code> (for BSC, etc.) and <code>EIP-1559</code> (for Ethereum).</li>
-                     <li><strong>Legacy TX Settings</strong>:
-                        <ul>
-                           <li><code>Set Buy/Approve/Sell Gas Price</code>: The gas price in Gwei.</li>
-                           <li><code>Set Buy/Approve/Sell Gas Limit</code>: The maximum gas the transaction can use.</li>
-                           <li><code>Toggle Auto Gas Price Calculation</code> (Pro): Automatically sets the gas price based on network conditions.</li>
-                        </ul>
-                     </li>
-                     <li><strong>EIP-1559 TX Settings</strong>:
-                        <ul>
-                           <li><code>Set ... Max Priority Fee</code>: The "tip" to the validator in Gwei.</li>
-                           <li><code>Set ... Max Base Fee</code>: The maximum base fee you're willing to pay.</li>
-                           <li><code>Set ... Gas Limit</code>: The gas limit for the transaction.</li>
-                           <li><code>Toggle Auto Gas Price Calculation</code> (Pro): Automatically sets fees.</li>
-                           <li><code>Set Auto Gas Price Priority</code>: Sets the speed for auto-calculated fees (<code>Slow</code>, <code>Medium</code>, <code>Fast</code>).</li>
-                        </ul>
-                     </li>
-                  </ul>
-                  <h4>LaunchSniper Settings (EVM)</h4>
-                  <ul>
-                     <li><strong>Transaction Revert Time</strong>: How long to wait (in seconds) before considering a transaction failed.</li>
-                     <li><strong>Slippage Percentage</strong>: The maximum percentage the price can change before your transaction reverts.</li>
-                     <li><strong>Basic Autosell Multipliers</strong>: Set the take-profit (e.g., <code>2</code> for 2x) and stop-loss (e.g., <code>0.5</code> for -50%) multipliers.</li>
-                     <li><strong>Sell After Time Delay (Blocks)</strong>: The number of blocks to wait after a buy before automatically selling.</li>
-                     <li><strong>Trailing Stop Loss (TSL) Settings</strong> (Pro): Configure the TSL (see section 6.4).</li>
-                     <li><strong>Max Buy/Sell Fee (Trading Checker)</strong>: The maximum tax percentage the bot will tolerate when buying or selling a token.</li>
-                  </ul>
-                  <h4>MultiSniper Settings (EVM)</h4>
-                  <p>This opens a sub-menu:</p>
-                  <ul>
-                     <li><strong>Manage Trading Settings</strong>: Configure the core trading parameters (see below).</li>
-                     <li><strong>Manage Telegram Settings</strong>: Set up your Telegram API ID and Hash to allow the bot to read channel messages.</li>
-                     <li><strong>Manage Monitored Channels</strong>: Add, edit, or delete the Telegram channels you want the bot to monitor. You can set whitelist/blacklist keywords for each channel (Pro feature).</li>
-                     <li><strong>Manage Liquidity Pairs</strong>: Configure which tokens the bot should use for liquidity (e.g., WBNB, USDC) and set buy amounts and liquidity filters for each.</li>
-                  </ul>
-                  <p><strong>MultiSniper Trading Settings</strong>:</p>
-                  <ul>
-                     <li><strong>Toggle Buy/Sell Tokens</strong>: Master switches to enable or disable trading.</li>
-                     <li><strong>Set Trading Mode</strong>: Choose your automatic selling strategy (<code>MANUAL_SELLING</code>, <code>BASIC_AUTOSELL</code>, <code>SELL_AFTER_TIME_DELAY</code>, <code>TRAILING_STOP_LOSS</code> (Pro)).</li>
-                     <li><strong>Set Total Allowed Snipes</strong>: The max number of buys before the bot stops (<code>-1</code> for unlimited).</li>
-                     <li><strong>Toggle Allow Buy Previously Owned Tokens</strong>: If enabled, the bot can re-buy tokens it has sold before.</li>
-                     <li><strong>Toggle Use Single Liquidity Pair</strong>: If enabled, the bot only buys tokens paired against the chain's native wrapped asset (e.g., WBNB, WETH).</li>
-                     <li><strong>Toggle Enable Trading Checker</strong>: Enables pre-buy safety checks for taxes and honeypots.</li>
-                     <li><strong>Set Auto Sell Percentage</strong>: The percentage of a position to sell when an auto-sell condition is met (e.g., <code>100</code> for all).</li>
-                  </ul>
-                  
-                  <h3 id="solana-settings">5.2. Solana Settings</h3>
-                  <h4>Trading Settings (Solana)</h4>
-                  <p>This menu contains all the core trading parameters for the SolanaSniper, mirroring the EVM MultiSniper settings but with some Solana-specific adjustments.</p>
-                  <ul>
-                     <li><strong>Toggle Buy/Sell Tokens</strong></li>
-                     <li><strong>Set Trading Mode</strong>: (<code>MANUAL_SELLING</code>, <code>BASIC_AUTOSELL</code>, <code>SELL_AFTER_TIME_DELAY</code>, <code>TRAILING_STOP_LOSS</code> (Pro)).</li>
-                     <li><strong>Set Total Allowed Snipes</strong></li>
-                     <li><strong>Toggle Allow Buy Previously Owned Tokens</strong></li>
-                     <li><strong>Simulation Mode</strong>:
-                        <ul>
-                           <li><code>Toggle Simulation Mode</code>: If enabled, the bot will simulate buys and sells without using real funds.</li>
-                           <li><code>Set Simulation Starting Balance</code>: Sets the virtual SOL balance for simulation mode.</li>
-                        </ul>
-                     </li>
-                     <li><strong>Buy Settings</strong>:
-                        <ul>
-                           <li><code>Set Buy Amount (SOL)</code>: The amount of SOL to use for each purchase.</li>
-                           <li><code>Set Slippage Percentage</code></li>
-                        </ul>
-                     </li>
-                     <li><strong>Sell Settings</strong>:
-                        <ul>
-                           <li><code>Set Auto Sell Percentage</code></li>
-                           <li><code>Set ... (Basic Autosell)</code></li>
-                           <li><code>Set Seconds Delay (Sell After Time Delay)</code>: Note this is in <strong>seconds</strong>, not blocks.</li>
-                           <li><code>Set ... (TSL)</code> (Pro)</li>
-                        </ul>
-                     </li>
-                  </ul>
-                  <h4>Wallet, Gas, Node, and Telegram Settings (Solana)</h4>
-                  <ul>
-                     <li><strong>Manage Wallet Settings</strong>: Import or generate your Solana wallet.</li>
-                     <li><strong>Manage Gas Settings</strong>:
-                        <ul>
-                           <li><code>Set Priority Fee (SOL)</code>: The extra fee to add to transactions for faster processing.</li>
-                           <li><code>Set Compute Unit Limit</code>: The maximum compute units a transaction can use.</li>
-                        </ul>
-                     </li>
-                     <li><strong>Manage Node Settings</strong> (Pro): Set a custom Solana RPC node URL.</li>
-                     <li><strong>Manage Telegram Settings</strong>: Same as the EVM MultiSniper.</li>
-                     <li><strong>Manage Monitored Channels</strong>: Same as the EVM MultiSniper.</li>
-                  </ul>
-                  
-                  <h3 id="other-settings">5.3. Other Settings (General)</h3>
-                  <ul>
-                     <li><strong>Set Price Difference Alert Threshold</strong>: The percentage price change required to trigger a new price update message in your chat (e.g., <code>0.1</code> for 10%).</li>
-                     <li><strong>Keep Price Message History</strong>: If disabled, new price updates will edit the previous message instead of sending a new one.</li>
-                     <li><strong>Change Language</strong></li>
-                     <li><strong>Reset All Settings</strong>: Wipes your user data file and resets the bot to its default state. <strong>Use with caution!</strong></li>
-                  </ul>
-                  
-                  <hr>
-                  
-                  <h2 id="trading-modes">6. Trading Modes Explained</h2>
-                  <h3 id="manual-selling">6.1. Manual Selling</h3>
-                  <p>The bot buys a token and holds it until you manually sell it using the <code>/sell</code> command.</p>
-                  
-                  <h3 id="basic-autosell">6.2. Basic Autosell</h3>
-                  <p>The bot sells automatically when the token's price hits either a take-profit or a stop-loss target.</p>
-                  <p><strong>Example</strong>: You set <code>Auto Sell Multiplier</code> to <code>3</code> (for 3x) and <code>Stop Loss Multiplier</code> to <code>0.5</code> (for -50%). If the token's value triples, the bot sells. If it drops to half its initial value, the bot sells.</p>
-                  
-                  <h3 id="sell-after-time-delay">6.3. Sell After Time Delay</h3>
-                  <p>The bot sells automatically after a fixed amount of time has passed.</p>
-                  <ul>
-                     <li><strong>EVM</strong>: Set in <strong>blocks</strong>.</li>
-                     <li><strong>Solana</strong>: Set in <strong>seconds</strong>.</li>
-                  </ul>
-                  
-                  <h3 id="trailing-stop-loss">6.4. Trailing Stop Loss (TSL) (Pro Feature)</h3>
-                  <p>TSL is a powerful strategy that lets your profits run while protecting you from sharp price drops.</p>
-                  <h4>How It Works</h4>
-                  <ol>
-                     <li><strong>Activation</strong>: The TSL does nothing until the token's price reaches your <code>Min Activation</code> multiplier.</li>
-                     <li><strong>Tracking the Peak</strong>: Once activated, the bot remembers the highest price multiplier the token reaches (the "peak").</li>
-                     <li><strong>Setting the "Trap"</strong>: The bot calculates a "trail price" that is a certain percentage below the peak. This percentage is your <code>Trail Amount</code>.</li>
-                     <li><strong>Triggering the Sell</strong>: If the price drops from its peak and hits the trail price, the bot sells immediately. If the price keeps rising, the trail price moves up with it, always staying the same percentage below the new peak.</li>
-                  </ol>
-                  <h4>TSL Example</h4>
-                  <ul>
-                     <li>Your Settings:
-                        <ul>
-                           <li><code>Min Activation</code>: <strong>1.5x</strong></li>
-                           <li><code>Trail Amount</code>: <strong>0.2</strong> (which is 20%)</li>
-                           <li><code>Hardcap</code>: <strong>10x</strong> (An optional safety net to sell at a fixed high point)</li>
-                        </ul>
-                     </li>
-                  </ul>
-                  <p>The Trade:</p>
-                  <ol>
-                     <li>You buy a token for $100.</li>
-                     <li>The price goes to $140 (1.4x). TSL is <strong>not active</strong> yet.</li>
-                     <li>The price hits $150 (1.5x). TSL is now <strong>active</strong>. The peak is <strong>1.5x</strong>.</li>
-                     <li>The trail price is set at <code>1.5x * (1 - 0.2) = 1.2x</code>. If the price drops to $120, the bot will sell.</li>
-                     <li>The price continues to rise to $300 (3.0x). The peak is now <strong>3.0x</strong>.</li>
-                     <li>The trail price is recalculated and moves up to <code>3.0x * (1 - 0.2) = 2.4x</code>.</li>
-                     <li>The price then drops to $240 (2.4x). The bot <strong>sells immediately</strong>, locking in a ~2.4x profit.</li>
-                  </ol>
-                  <p>This strategy allows you to capture the majority of a pump while automatically protecting your gains when the trend reverses.</p>
+
                </main>
                <hr>
                <footer>

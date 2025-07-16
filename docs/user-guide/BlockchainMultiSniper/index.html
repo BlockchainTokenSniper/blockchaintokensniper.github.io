@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en-US">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+      <link rel="stylesheet" href="../../../assets/css/just-the-docs-default.css">
+      <script src="../../../assets/js/vendor/lunr.min.js"></script> <script src="../../../assets/js/just-the-docs.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+      <title>MultiSniper Guide | BlockchainTokenSniper V3</title>
+      <meta name="description" content="User guide for the BlockchainMultiSniper bot" />
+   <body>
+      <a class="skip-to-main" href="#main-content">Skip to main content</a> 
+      <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+         <symbol id="svg-link" viewBox="0 0 24 24"><title>Link</title><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-link"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path> </svg> </symbol>
+         <symbol id="svg-menu" viewBox="0 0 24 24"><title>Menu</title><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line> </svg> </symbol>
+         <symbol id="svg-arrow-right" viewBox="0 0 24 24"><title>Expand</title><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline> </svg> </symbol>
+      </svg>
+      <div class="side-bar">
+      <div class="site-header" role="banner">
+         <a href="../../../index.html" class="site-title lh-tight"> BlockchainTokenSniper </a> 
+         <button id="menu-button" class="site-button btn-reset" aria-label="Toggle menu" aria-pressed="false">
+            <svg viewBox="0 0 24 24" class="icon" aria-hidden="true">
+               <use xlink:href="#svg-menu"></use>
+            </svg>
+         </button>
+      </div>
+      <nav aria-label="Main" id="site-nav" class="site-nav">
+         <ul class="nav-list">
+            <li class="nav-list-item"><a href="../../../index.html" class="nav-list-link">Home</a></li>
+            <li class="nav-list-item"><a href="../../contact/index.html" class="nav-list-link">Contact</a></li>
+            <li class="nav-list-item"><a href="../../downloads/index.html" class="nav-list-link">Accessing BTS V3</a></li>
+            <li class="nav-list-item"><a href="../../migration/index.html" class="nav-list-link">Information on V3</a></li>
+            <li class="nav-list-item"><a href="../../referral-system/index.html" class="nav-list-link">Referral system</a></li>
+            <li class="nav-list-item"><a href="../../supported-blockchains/index.html" class="nav-list-link">Supported blockchains / DEXs</a></li>
+            <li class="nav-list-item active">
+               <a href="../index.html" class="nav-list-link active">User Guide</a>
+               <ul class="nav-list">
+                  <li class="nav-list-item"><a href="../BlockchainLaunchSniper/index.html" class="nav-list-link">BlockchainLaunchSniper</a></li>
+                  <li class="nav-list-item"><a href="./index.html" class="nav-list-link active">BlockchainMultiSniper</a></li>
+                  <li class="nav-list-item"><a href="../SolanaMultiSniper/index.html" class="nav-list-link">BlockchainSolanaSniper</a></li>
+               </ul>
+            </li>
+         </ul>
+      </nav>
+         <footer class="site-footer"></footer>
+      </div>
+      <div class="main" id="top">
+         <div id="main-header" class="main-header">
+         </div>
+         <div id="main-content-wrap" class="main-content-wrap">
+            <div id="main-content" class="main-content">
+               <main>
+                  <h1 class="no_toc" id="multisniper-guide">
+                     BlockchainMultiSniper Guide (EVM)
+                  </h1>
+                  <p>The MultiSniper automatically buys and sells tokens from configured Telegram channels on EVM-compatible chains.</p>
+                  
+                  <hr>
+
+                  <h2 id="how-to-use">How to Use MultiSniper</h2>
+                  <ol>
+                     <li>Use <code>/start</code> to go to the main menu.</li>
+                     <li>Click on 'Change Chain / DEX', and switch to your desired EVM chain.</li>
+                     <li>Fund your wallet with the native currency (e.g. ETH, BNB).</li>
+                     <li>Go into <code>/settings</code> -> <code>MultiSniper Settings</code> to configure the bot. This is a critical step.</li>
+                     <li>Start the bot from the main menu by clicking 'Auto buy / sell (MultiSniper) (EVM)' or using the <code>/multi</code> command.</li>
+                  </ol>
+
+                  <hr>
+
+                  <h2 id="configuration-settings">MultiSniper Configuration</h2>
+                  <p>All settings are found in the <code>/settings</code> -> <code>MultiSniper Settings (EVM)</code> menu.</p>
+                  
+                  <p>This opens a sub-menu:</p>
+                  <ul>
+                     <li><strong>Manage Trading Settings</strong>: Configure the core trading parameters (see below).</li>
+                     <li><strong>Manage Monitored Channels</strong>: Add, edit, or delete the Telegram channels you want the bot to monitor. You can set whitelist/blacklist keywords for each channel (Pro feature).</li>
+                     <li><strong>Manage Liquidity Pairs</strong>: Configure which tokens the bot should use for liquidity (e.g., WBNB, USDC) and set buy amounts and liquidity filters for each.</li>
+                  </ul>
+                  
+                  <h3 id="multisniper-trading-settings">MultiSniper Trading Settings</h3>
+                  <ul>
+                     <li><strong>Toggle Buy/Sell Tokens</strong>: Master switches to enable or disable trading.</li>
+                     <li><strong>Set Trading Mode</strong>: Choose your automatic selling strategy (<code>MANUAL_SELLING</code>, <code>BASIC_AUTOSELL</code>, <code>SELL_AFTER_TIME_DELAY</code>, <code>TRAILING_STOP_LOSS</code> (Pro)).</li>
+                     <li><strong>Set Total Allowed Snipes</strong>: The max number of buys before the bot stops (<code>-1</code> for unlimited).</li>
+                     <li><strong>Toggle Allow Buy Previously Owned Tokens</strong>: If enabled, the bot can re-buy tokens it has sold before.</li>
+                     <li><strong>Toggle Use Single Liquidity Pair</strong>: If enabled, the bot only buys tokens paired against the chain's native wrapped asset (e.g., WBNB, WETH).</li>
+                     <li><strong>Toggle Enable Trading Checker</strong>: Enables pre-buy safety checks for taxes and honeypots.</li>
+                     <li><strong>Set Auto Sell Percentage</strong>: The percentage of a position to sell when an auto-sell condition is met (e.g., <code>100</code> for all).</li>
+                  </ul>
+
+                  <h3 id="evm-wallet-gas">General EVM Wallet & Gas Settings</h3>
+                  <p>MultiSniper uses the general EVM wallet and gas settings, configured in the main <code>/settings</code> menu.</p>
+
+                  <hr>
+
+                  <h2 id="trading-modes">Trading Modes Explained</h2>
+                  <p>MultiSniper can use the following automatic selling strategies after a successful buy.</p>
+                  <h3 id="manual-selling">Manual Selling</h3>
+                  <p>The bot buys a token and holds it until you manually sell it using the <code>/sell</code> command.</p>
+                  
+                  <h3 id="basic-autosell">Basic Autosell</h3>
+                  <p>The bot sells automatically when the token's price hits either a take-profit or a stop-loss target.</p>
+                  
+                  <h3 id="sell-after-time-delay">Sell After Time Delay</h3>
+                  <p>The bot sells automatically after a fixed number of blocks have passed since the buy.</p>
+                  
+                  <h3 id="trailing-stop-loss">Trailing Stop Loss (TSL) (Pro Feature)</h3>
+                  <p>TSL is a powerful strategy that lets your profits run while protecting you from sharp price drops. It activates after a minimum profit is reached and then "trails" the peak price, selling if the price drops by a certain percentage from that peak.</p>
+
+               </main>
+               <hr>
+               <footer>
+                  <div class="d-flex mt-2"></div>
+               </footer>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>

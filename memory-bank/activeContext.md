@@ -4,17 +4,20 @@
 
 ## Current Focus
 
-*   **Comprehensive User Guide Update**:
-    *   **Goal**: Overhaul the user guide to be a single, comprehensive document covering all features of the BTS V3 bot.
-    *   **Status**: **Completed (07/09/2025)**.
-        *   Replaced the content of `docs/user-guide/index.html` with a new, detailed guide provided by the user.
-        *   The new guide consolidates information for all snipers (LaunchSniper, MultiSniper, SolanaSniper) and includes detailed sections on commands, settings, and trading modes.
-    *   **Next Step**: Review if the old, separate user guide files (`BlockchainLaunchSniper/index.html`, etc.) should be removed or redirected.
+*   **Website Consistency**: Ensure all pages have a consistent and up-to-date navigation structure.
+*   **Cleanup of Old User Guides**: Review if the old, separate user guide files (`BlockchainLaunchSniper/index.html`, etc.) should be removed or redirected, now that the main user guide page links to the individual guides.
 
 ## Recent Changes
 
+*   **Website Navigation and Content Correction (Completed 16/07/2025)**:
+    *   Corrected the "SolanaSniper" link to "BlockchainSolanaSniper" in the navigation bar across all relevant pages.
+    *   Corrected the navigation bar on all user guide sub-pages (`BlockchainLaunchSniper`, `BlockchainMultiSniper`, `SolanaMultiSniper`) to ensure the dropdown menu appears correctly and consistently across the entire site.
+    *   Updated the navigation bar across all other relevant pages (`index.html`, `404.html`, and all pages in `docs/`) to include a consistent dropdown menu for the User Guides.
+    *   Removed outdated Jekyll front matter from `docs/user-guide/index.html`.
+    *   Removed outdated Telegram API setup instructions from the `BlockchainMultiSniper` and `SolanaMultiSniper` user guides.
+
 *   **Comprehensive User Guide Overhaul (Completed 07/09/2025)**:
-    *   **`docs/user-guide/index.html`**: Replaced the entire content of the main user guide page with a new, comprehensive guide. This consolidates all previous user guide information into a single, authoritative source.
+    *   **`docs/user-guide/index.html`**: The main user guide page was updated to serve as a central hub linking to individual, detailed guides for each sniper bot.
 
 *   **Website Consistency Update (BlockchainSolanaSniper) (Completed 06/11/2025)**:
     *   **`docs/downloads/index.html`**: Added `BlockchainSolanaSniper` to the list of bots and updated the navigation menu.
