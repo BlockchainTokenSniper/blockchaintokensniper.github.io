@@ -4,10 +4,13 @@
 
 ## Current Focus
 
-*   **Website Consistency**: Ensure all pages have a consistent and up-to-date navigation structure.
+*   **Website Accuracy**: Ensure all information on the website is accurate and up-to-date.
 *   **Cleanup of Old User Guides**: Review if the old, separate user guide files (`BlockchainLaunchSniper/index.html`, etc.) should be removed or redirected, now that the main user guide page links to the individual guides.
 
 ## Recent Changes
+
+*   **Security Information Update (Completed 16/07/2025)**:
+    *   Corrected the security information in `docs/user-guide/index.html` to state that private keys are stored on BTS V3 servers, not on the user's local machine.
 
 *   **Website Navigation and Content Correction (Completed 16/07/2025)**:
     *   Corrected the "SolanaSniper" link to "BlockchainSolanaSniper" in the navigation bar across all relevant pages.

@@ -2,10 +2,11 @@
 
 **Note:** This repository and progress report primarily concern the **BTS V3 Website**. Information regarding the BTS V3 bot application's internal workings is handled in separate repositories.
 
-## Current Status (Post Navigation and Content Correction 16/07/2025)
+## Current Status (Post Content and Navigation Correction 16/07/2025)
 
-*   **Overall:** The website's navigation has been standardized across all pages, and the user guides have been updated for accuracy.
-*   **Recent Website Code Changes (Navigation and Content Correction)**:
+*   **Overall:** The website's navigation and content have been updated for consistency and accuracy.
+*   **Recent Website Code Changes (Content and Navigation Correction)**:
+    *   Corrected the security information in `docs/user-guide/index.html` to state that private keys are stored on BTS V3 servers.
     *   Corrected the "SolanaSniper" link to "BlockchainSolanaSniper" in the navigation bar across all relevant pages.
     *   Corrected the navigation bar on all user guide sub-pages (`BlockchainLaunchSniper`, `BlockchainMultiSniper`, `SolanaMultiSniper`) to ensure the dropdown menu appears correctly and consistently across the entire site.
     *   Updated the navigation bar across all other relevant pages (`index.html`, `404.html`, and all pages in `docs/`) to include a consistent dropdown menu for the User Guides.
@@ -17,7 +18,7 @@
 ## What Works (Website)
 
 *   The navigation bar is now consistent across the entire website, featuring a dropdown menu for the user guides with corrected naming.
-*   The user guides for `BlockchainMultiSniper` and `SolanaMultiSniper` now provide accurate setup instructions.
+*   The user guides provide accurate setup and security information.
 *   The main user guide page at `docs/user-guide/index.html` serves as a central hub for all guides.
 *   The homepage correctly introduces all three bot variants.
 *   Static assets (CSS, JS for website) are loading correctly.
@@ -39,4 +40,4 @@
 *   **Website Content Strategy**: The user guide has been consolidated from multiple separate pages into a single, comprehensive document. This decision was made to improve user experience and simplify content management.
 *   **Repository Scope Clarification**: Memory bank and project documentation updated to clearly define this repository as containing only the website code.
 
-*(This document reflects the state after the completion of the navigation and content correction.)*
+*(This document reflects the state after the completion of the content and navigation correction.)*
